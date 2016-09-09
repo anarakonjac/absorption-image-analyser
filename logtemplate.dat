@@ -1,0 +1,2 @@
+Year,Root,Number,Vcontrol,OD,Hsigma (px),Vsigma (px),Hcentre,Vcentre,Nh,Nv,Hoffset,Voffset,I/Isat,Detuning (MHz),TOF (ms),xfreq (Hz),yfreq (Hz),zfreq (Hz),PixelSize (um),Comment,Number from OD,Number from pixel sum,Temp H,Temp V,Phase space density,peak density,Thomas-Fermi radius H,Thomas-Fermi radius V,Condensate fraction,Aspect ratio,Config file name
+2000,30Jan,5,2,0.61811,2.4181,2.2461,18.7462,21.0845,18674.8979,18349.4715,0.22357,0.23192,0.1,0,24,20,20,20,16,Testing,0,0,0,0,0,0,0,0,0,0,configfilename

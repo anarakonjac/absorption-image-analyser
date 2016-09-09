@@ -1,0 +1,2 @@
+Year,Root,Number,Vcontrol,OD,Amplitude,Hsigma (px),Vsigma (px),Hcentre,Vcentre,Ntot,Ncomponent,Background,I/Isat,Detuning (MHz),TOF (ms),xfreq (Hz),yfreq (Hz),zfreq (Hz),PixelSize (um),Comment
+2000,30Jan,5,2,0.61811,0.61811,2.2461,2.2461,18.7462,21.0845,18674.8979,18674.8979,0.22357,0.1,0,24,20,20,20,16,Testing
