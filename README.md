@@ -1,2 +1,8 @@
 # absorption-image-analyser
 A Matlab GUI for processing and analysing absorption images from cold atom experiments.
+
+This is a graphical tool used by our research group for processing absorption images. It's designed to synchronise to our LabView experimental control program, Dexter, but is generic, so can in principle be easily adapted for any cold atoms experiment. It will take three camera images (an absorption image with atoms, a probe light only image, and a dark background image), process them, optionally clean up images (using a Fourier filter or creating an "ideal" background image), perform fitting routines, plot data, and save and export data. It has a tabbed interface with two tabs dedicated to analysing images from two atomic species (for dual-species experiments) or two cameras, and a third tab that plots data. One does not need to know Matlab in order to use this program.
+
+Instructions on prerequisites and getting started can be found in the document "Image Analysis 2.0 User Guide" and a breakdown of how images are processed and how parameters are calculated can be found in the aptly-named "How things are calculated in the imaging program". "Image Analysis file tree" attempts to list which scripts are called where, since things can be somewhat obscured in Matlab GUIs. The "Troubleshooting" section in the user guide is presently incomplete and will be added to as time goes on.
+
+This tool is provided here mainly for use by our research group. If outside users require help getting started or adapting the program to their needs, I am happy to answer brief questions, but there is no intention to provide extensive support to other users. Please do bring any bugs to my attention though!
