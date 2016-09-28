@@ -32,7 +32,6 @@ p2 = max(point1,point2);
 % Background mask
 bgmask = ones(size(A_processed));
 bgmask(p1(2):p2(2),p1(1):p2(1)) = 0;
-bgmask = bgmask(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
 
 
 %% Reload images files for re-processing
@@ -58,6 +57,7 @@ C = load([currentPath cstorename_sp2]);
 if useROI_sp2 == 1 
     A = A(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
     C = C(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
+    bgmask = bgmask(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
 end
 
 
@@ -71,7 +71,11 @@ for ii = 1:1:length(refindex_sp2);
  
     filename_ref = [filename_chopped num2str(refindex_sp2(ii)) '.asc'];
     refimg = load([frPath_sp2 filename_ref]);
-    refimg = refimg(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
+    
+    if useROI_sp2 == 1
+        refimg = refimg(ax_sp2(3):ax_sp2(4),ax_sp2(1):ax_sp2(2));
+    end
+    
     refimg_matrix(:,:,ii) = refimg;
   
 end
