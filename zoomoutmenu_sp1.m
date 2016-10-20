@@ -48,6 +48,19 @@ switch fittype_sp1
             
         end
         
+        A_sum = sum(sum(Anew));
+        handles.A_sum_sp1 = A_sum;
+        
+        fitnewsave_sp1;
+        
+        opticaldepth = crosszfit(2) + crosszfit(1);		%Background added to give real OD of cloud
+        
+        % update image and camera coordinate window and write full image coordinates into them
+        set(handles.text_coordvalues_sp1,'String',['1,1,' num2str(n) ',' num2str(m)]);
+        clear m n
+        
+        datadisp_sp1;   % extract parameters and display in GUI
+        
     case 'thomas-fermi'
         
         fitloadTF_sp1;
@@ -70,11 +83,6 @@ switch fittype_sp1
         
 end
 
-A_sum = sum(sum(Anew));
-handles.A_sum_sp1 = A_sum;
-
-fitnewsave_sp1;
-
 axes(handles.axes_2d_sp1)
 zoomoutsize = max(ax_zoomout);
 % set(handles.axes_2d_sp1,'xlim',[ax_zoomout(1) zoomoutsize],'ylim',[ax_zoomout(3) zoomoutsize]);
@@ -82,11 +90,3 @@ imagesc(A)
 caxis(colour_sp1)
 axis equal
 title([element_sp1 filename_sp1],'Interpreter','none')
-
-opticaldepth = crosszfit(2) + crosszfit(1);		%Background added to give real OD of cloud
-
-% update image and camera coordinate window and write full image coordinates into them
-set(handles.text_coordvalues_sp1,'String',['1,1,' num2str(n) ',' num2str(m)]);
-clear m n
-
-datadisp_sp1;   % extract parameters and display in GUI

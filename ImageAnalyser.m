@@ -317,11 +317,25 @@ if isempty(delta_sp1)
 else
     
     save('maindata','delta_sp1','-append');
+    load maindata
     
-    fitnewload_sp1;
-    keepROI_option_sp1 = 1;
-    datadisp_sp1;
-    keepROI_option_sp1 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp1;
+            keepROI_option_sp1 = 1;
+            datadisp_sp1;
+            keepROI_option_sp1 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp1;
+            keepROI_option_sp1 = 1;
+            datadispTF_sp1;
+            keepROI_option_sp1 = 0;
+            
+    end
     
 end
 
@@ -360,12 +374,26 @@ if isempty(tof_sp1)
 else
     
     save('maindata','tof_sp1','-append');
+    load maindata
     
-    fitnewload_sp1;
-    keepROI_option_sp1 = 1;
-    datadisp_sp1;
-    keepROI_option_sp1 = 0;
-    
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp1;
+            keepROI_option_sp1 = 1;
+            datadisp_sp1;
+            keepROI_option_sp1 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp1;
+            keepROI_option_sp1 = 1;
+            datadispTF_sp1;
+            keepROI_option_sp1 = 0;
+            
+    end
+        
 end
 
 guidata(hObject, handles);
@@ -403,11 +431,25 @@ if isempty(xfreq_sp1)
 else
     
     save('maindata','xfreq_sp1','-append');
+    load maindata
     
-    fitnewload_sp1;
-    keepROI_option_sp1 = 1;
-    datadisp_sp1;
-    keepROI_option_sp1 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp1;
+            keepROI_option_sp1 = 1;
+            datadisp_sp1;
+            keepROI_option_sp1 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp1;
+            keepROI_option_sp1 = 1;
+            datadispTF_sp1;
+            keepROI_option_sp1 = 0;
+            
+    end
     
 end
 
@@ -445,11 +487,25 @@ if isempty(yfreq_sp1)
 else
     
     save('maindata','yfreq_sp1','-append');
+    load maindata
     
-    fitnewload_sp1;
-    keepROI_option_sp1 = 1;
-    datadisp_sp1;
-    keepROI_option_sp1 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp1;
+            keepROI_option_sp1 = 1;
+            datadisp_sp1;
+            keepROI_option_sp1 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp1;
+            keepROI_option_sp1 = 1;
+            datadispTF_sp1;
+            keepROI_option_sp1 = 0;
+            
+    end
     
 end
 
@@ -488,11 +544,25 @@ if isempty(zfreq_sp1)
 else
     
     save('maindata','zfreq_sp1','-append');
+    load maindata
     
-    fitnewload_sp1;
-    keepROI_option_sp1 = 1;
-    datadisp_sp1;
-    keepROI_option_sp1 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp1;
+            keepROI_option_sp1 = 1;
+            datadisp_sp1;
+            keepROI_option_sp1 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp1;
+            keepROI_option_sp1 = 1;
+            datadispTF_sp1;
+            keepROI_option_sp1 = 0;
+            
+    end
     
 end
 
@@ -822,11 +892,25 @@ if isempty(delta_sp2)
 else
     
     save('maindata','delta_sp2','-append');
+    load maindata
     
-    fitnewload_sp2;
-    keepROI_option_sp2 = 1;
-    datadisp_sp2;
-    keepROI_option_sp2 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp2;
+            keepROI_option_sp2 = 1;
+            datadisp_sp2;
+            keepROI_option_sp2 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp2;
+            keepROI_option_sp2 = 1;
+            datadispTF_sp2;
+            keepROI_option_sp2 = 0;
+            
+    end
     
 end
 
@@ -865,11 +949,25 @@ if isempty(tof_sp2)
 else
     
     save('maindata','tof_sp2','-append');
+    load maindata
     
-    fitnewload_sp2;
-    keepROI_option_sp2 = 1;
-    datadisp_sp2;
-    keepROI_option_sp2 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp2;
+            keepROI_option_sp2 = 1;
+            datadisp_sp2;
+            keepROI_option_sp2 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp2;
+            keepROI_option_sp2 = 1;
+            datadispTF_sp2;
+            keepROI_option_sp2 = 0;
+            
+    end
     
 end
 
@@ -908,11 +1006,25 @@ if isempty(xfreq_sp2)
 else
     
     save('maindata','xfreq_sp2','-append');
+    load maindata
     
-    fitnewload_sp2;
-    keepROI_option_sp2 = 1;
-    datadisp_sp2;
-    keepROI_option_sp2 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp2;
+            keepROI_option_sp2 = 1;
+            datadisp_sp2;
+            keepROI_option_sp2 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp2;
+            keepROI_option_sp2 = 1;
+            datadispTF_sp2;
+            keepROI_option_sp2 = 0;
+            
+    end
     
 end
 
@@ -951,11 +1063,25 @@ if isempty(yfreq_sp2)
 else
     
     save('maindata','yfreq_sp2','-append');
+    load maindata
     
-    fitnewload_sp2;
-    keepROI_option_sp2 = 1;
-    datadisp_sp2;
-    keepROI_option_sp2 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp2;
+            keepROI_option_sp2 = 1;
+            datadisp_sp2;
+            keepROI_option_sp2 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp2;
+            keepROI_option_sp2 = 1;
+            datadispTF_sp2;
+            keepROI_option_sp2 = 0;
+            
+    end
     
 end
 
@@ -994,11 +1120,25 @@ if isempty(zfreq_sp2)
 else
     
     save('maindata','zfreq_sp2','-append');
+    load maindata
     
-    fitnewload_sp2;
-    keepROI_option_sp2 = 1;
-    datadisp_sp2;
-    keepROI_option_sp2 = 0;
+    switch fittype_sp1
+        
+        case 'gaussian'
+            
+            fitnewload_sp2;
+            keepROI_option_sp2 = 1;
+            datadisp_sp2;
+            keepROI_option_sp2 = 0;
+            
+        case 'thomas-fermi'
+            
+            fitnewloadTF_sp2;
+            keepROI_option_sp2 = 1;
+            datadispTF_sp2;
+            keepROI_option_sp2 = 0;
+            
+    end
     
 end
 
@@ -2291,6 +2431,8 @@ removefringes_sp1;
 
 handles.fr_pressed_sp1 = 0;
 
+guidata(hObject, handles);
+
 
 % --- Executes on button press in pushbutton_fr_sp2.
 function pushbutton_fr_sp2_Callback(hObject, eventdata, handles)
@@ -2304,6 +2446,8 @@ keepROI_option_sp2 = 0;
 removefringes_sp2;
 
 handles.fr_pressed_sp2 = 0;
+
+guidata(hObject, handles);
 
 
 % --- Executes on button press in pushbutton_newdata_sp2.

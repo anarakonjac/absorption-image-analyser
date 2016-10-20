@@ -19,8 +19,13 @@ if ~exist('dataplotterstore.mat','file')  % any of the stored variables will do
     sigma_h_store_sp2 = horizontalsize;
     sigma_v_store_sp2 = verticalsize;
     
-    center_h_store_sp2 = cx(3);
-    center_v_store_sp2 = cz(3);
+    if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)  % sum or cut
+        center_h_store_sp2 = crossxfit(3);
+        center_v_store_sp2 = crosszfit(3);
+    else
+        center_h_store_sp2 = cx(3);
+        center_v_store_sp2 = cz(3);
+    end
     
     variable_store_sp2 = variableValue;
     
@@ -76,8 +81,13 @@ else
         sigma_h_store_sp2(end) = horizontalsize;
         sigma_v_store_sp2(end) = verticalsize;
         
-        center_h_store_sp2(end) = cx(3);
-        center_v_store_sp2(end) = cz(3);
+        if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)  % sum or cut
+            center_h_store_sp2(end) = crossxfit(3);
+            center_v_store_sp2(end) = crosszfit(3);
+        else
+            center_h_store_sp2(end) = cx(3);
+            center_v_store_sp2(end) = cz(3);
+        end
         
         variable_store_sp2(end) = variableValue;
         
@@ -100,8 +110,13 @@ else
         sigma_h_store_sp2 = [sigma_h_store_sp2 horizontalsize];
         sigma_v_store_sp2 = [sigma_v_store_sp2 verticalsize];
         
-        center_h_store_sp2 = [center_h_store_sp2 cx(3)];
-        center_v_store_sp2 = [center_v_store_sp2 cz(3)];
+        if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)  % sum or cut
+            center_h_store_sp2 = [center_h_store_sp2 crossxfit(3)];
+            center_v_store_sp2 = [center_v_store_sp2 crossxfit(3)];
+        else
+            center_h_store_sp2 = [center_h_store_sp2 cx(3)];
+            center_v_store_sp2 = [center_v_store_sp2 cz(3)];
+        end
         
         variable_store_sp2 = [variable_store_sp2 variableValue];
         

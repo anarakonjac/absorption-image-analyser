@@ -19,5 +19,6 @@ handles.crosscutnew_x_TF_sp2 = crosscut_x;
 handles.DGfitnew_sp2 = DGfit;
 handles.Thermfit_pixelnew_sp2 = Thermfit_pixel;
 handles.parabola2D_pixelnew_sp2 = parabola2D_pixel;
+handles.total2Dfit_pixelnew_sp2 = total2Dfit_pixel;
 handles.TF_znew_sp2 = TF_z;
 handles.TF_xnew_sp2 = TF_x;

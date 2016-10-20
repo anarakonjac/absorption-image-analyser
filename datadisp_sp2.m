@@ -19,14 +19,33 @@ species1 = element_sp2; %cell2mat(handles.species1);
 sigma0 = 3*(lambda).^2/(2.0*(pi)); % in SI
 sigmatotal = sigma0/(1 + 2*IoverIs_sp2 + 4*(delta_sp2/gam)^2);
 
-verticalsize = cz(4)/(2^0.5)*pixelsize2; % Changed 01/04/11  
-
-if viewAngle_sp2 == 0
-    h_size_angle_corrected  = cx(4);  % ie no change
-    horizontalsize  = h_size_angle_corrected/(2^0.5)*pixelsize2; % Conversion to rms width and microns
+if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)  % sum or cut
+    verticalsize = crosszfit(4)/(2^0.5)*pixelsize2;
 else
-    h_size_angle_corrected  = 1/cos(viewAngle_sp2)*(cx(4)^2 - cz(4)^2*sin(viewAngle_sp2)^2)^0.5; % Corrected for angle, still in px
+    verticalsize = cz(4)/(2^0.5)*pixelsize2;
+end
+
+% Correcting for view angle if necessary
+if viewAngle_sp2 == 0
+    
+    if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)  % sum or cut
+        h_size_angle_corrected  = crossxfit(4);  % ie no change
+    else
+        h_size_angle_corrected  = cx(4);  % ie no change
+    end
+    
+    horizontalsize  = h_size_angle_corrected/(2^0.5)*pixelsize2; % Conversion to rms width and microns
+    
+else
+    
+    if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)  % sum or cut
+        h_size_angle_corrected  = 1/cos(viewAngle_sp2)*(crossxfit(4)^2 - crosszfit(4)^2*sin(viewAngle_sp2)^2)^0.5; % Corrected for angle, still in px
+    else
+        h_size_angle_corrected  = 1/cos(viewAngle_sp2)*(cx(4)^2 - cz(4)^2*sin(viewAngle_sp2)^2)^0.5; % Corrected for angle, still in px
+    end
+    
     horizontalsize  = h_size_angle_corrected/(2^0.5)*pixelsize2; % Conversion to rms width  and microns
+    
 end
 
 %horizontalsize  = cx(4)/(2^0.5)*pixelsize2; % Changed 01/04/11 
@@ -75,23 +94,47 @@ psdensity = npk*(h/((2*pi*mass*kB*mean([Tv Th]))^0.5))^3;
 
 %% Display graphics and text in the GUI
 
-set(handles.text_back_h_sp2,'String',num2str(cx(1),'%6.2f'))
-handles.back_h_sp2 = cx(1);
-set(handles.text_amp_h_sp2,'String',num2str(cx(2),'%6.2f'))
-handles.amp_h_sp2 = cx(2);
-set(handles.text_cen_h_sp2,'String',num2str(cx(3),'%6.2f'))
-handles.cen_h_sp2 = cx(3);
-set(handles.text_sig_h_sp2,'String',num2str(cx(4)/2^0.5,'%6.2f'))
-handles.sig_h_sp2 = cx(4)/2^0.5; % Converting to RMS width.
-
-set(handles.text_back_v_sp2,'String',num2str(cz(1),'%6.2f'))
-handles.back_v_sp2 = cz(1);
-set(handles.text_amp_v_sp2,'String',num2str(cz(2),'%6.2f'))
-handles.amp_v_sp2 = cz(2);
-set(handles.text_cen_v_sp2,'String',num2str(cz(3),'%6.2f'))
-handles.cen_v_sp2 = cz(3);
-set(handles.text_sig_v_sp2,'String',num2str(cz(4)/2^0.5,'%6.2f'))
-handles.sig_v_sp2 = cz(4)/2^0.5; % Converting to RMS width.
+if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)  % sum or cut
+    
+    set(handles.text_back_h_sp2,'String',num2str(crossxfit(1),'%6.2f'))
+    handles.back_h_sp2 = crossxfit(1);
+    set(handles.text_amp_h_sp2,'String',num2str(crossxfit(2),'%6.2f'))
+    handles.amp_h_sp2 = crossxfit(2);
+    set(handles.text_cen_h_sp2,'String',num2str(crossxfit(3),'%6.2f'))
+    handles.cen_h_sp2 = crossxfit(3);
+    set(handles.text_sig_h_sp2,'String',num2str(crossxfit(4)/2^0.5,'%6.2f'))
+    handles.sig_h_sp2 = crossxfit(4)/2^0.5; % Converting to RMS width.
+    
+    set(handles.text_back_v_sp2,'String',num2str(crosszfit(1),'%6.2f'))
+    handles.back_v_sp2 = crosszfit(1);
+    set(handles.text_amp_v_sp2,'String',num2str(crosszfit(2),'%6.2f'))
+    handles.amp_v_sp2 = crosszfit(2);
+    set(handles.text_cen_v_sp2,'String',num2str(crosszfit(3),'%6.2f'))
+    handles.cen_v_sp2 = crosszfit(3);
+    set(handles.text_sig_v_sp2,'String',num2str(crosszfit(4)/2^0.5,'%6.2f'))
+    handles.sig_v_sp2 = crosszfit(4)/2^0.5; % Converting to RMS width.
+    
+else
+    
+    set(handles.text_back_h_sp2,'String',num2str(cx(1),'%6.2f'))
+    handles.back_h_sp2 = cx(1);
+    set(handles.text_amp_h_sp2,'String',num2str(cx(2),'%6.2f'))
+    handles.amp_h_sp2 = cx(2);
+    set(handles.text_cen_h_sp2,'String',num2str(cx(3),'%6.2f'))
+    handles.cen_h_sp2 = cx(3);
+    set(handles.text_sig_h_sp2,'String',num2str(cx(4)/2^0.5,'%6.2f'))
+    handles.sig_h_sp2 = cx(4)/2^0.5; % Converting to RMS width.
+    
+    set(handles.text_back_v_sp2,'String',num2str(cz(1),'%6.2f'))
+    handles.back_v_sp2 = cz(1);
+    set(handles.text_amp_v_sp2,'String',num2str(cz(2),'%6.2f'))
+    handles.amp_v_sp2 = cz(2);
+    set(handles.text_cen_v_sp2,'String',num2str(cz(3),'%6.2f'))
+    handles.cen_v_sp2 = cz(3);
+    set(handles.text_sig_v_sp2,'String',num2str(cz(4)/2^0.5,'%6.2f'))
+    handles.sig_v_sp2 = cz(4)/2^0.5; % Converting to RMS width.
+    
+end
 
 set(handles.text_aspecttof_sp2,'String',num2str(Ratio,'%6.2f'))
 handles.aspecttof_sp2 = Ratio;

@@ -108,14 +108,20 @@ lfc_sp2{26}{recpos} = num2str(handles.psdensity_sp1,'%6.3f'); % Phase space dens
 lfc_sp2{27}{recpos} = num2str(handles.npk_sp1,'%6.3f'); % Peak density
 
 % Test if we are doing TF fitting
-if isfield(handles,'sig_h_C_sp2')
-    lfc_sp2{28}{recpos} = num2str(handles.sig_h_C_sp2,'%6.3f'); % TF radius H
-    lfc_sp2{29}{recpos} = num2str(handles.sig_v_C_sp2,'%6.3f'); % TF radius V
-    lfc_sp2{30}{recpos} = num2str(handles.condFrac_sp2,'%6.3f'); % Condensate fraction
-else
-    lfc_sp2{28}{recpos} = '0'; % TF radius H
-    lfc_sp2{29}{recpos} = '0'; % TF radius V
-    lfc_sp2{30}{recpos} = '0'; % Condensate fraction
+switch fittype_sp1
+    
+    case 'gaussian'
+        
+        lfc_sp2{28}{recpos} = '0'; % TF radius H
+        lfc_sp2{29}{recpos} = '0'; % TF radius V
+        lfc_sp2{30}{recpos} = '0'; % Condensate fraction
+        
+    case 'thomas-fermi'
+        
+        lfc_sp2{28}{recpos} = num2str(handles.sig_h_C_sp2,'%6.6f'); % TF radius H
+        lfc_sp2{29}{recpos} = num2str(handles.sig_v_C_sp2,'%6.6f'); % TF radius V
+        lfc_sp2{30}{recpos} = num2str(handles.condFrac_sp2,'%6.6f'); % Condensate fraction
+        
 end
 
 lfc_sp2{31}{recpos} = num2str(handles.aspecttof_sp2,'%6.3f'); % Aspect ratio

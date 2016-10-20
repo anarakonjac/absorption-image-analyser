@@ -18,8 +18,13 @@ if ~exist('dataplotterstore.mat','file')   % Make a new file if one doesn't exis
     sigma_h_store_sp1 = horizontalsize;
     sigma_v_store_sp1 = verticalsize;
     
-    center_h_store_sp1 = cx(3);
-    center_v_store_sp1 = cz(3);
+    if (get(handles.popupmenu_1dsum_sp1,'Value') == 2)  % sum or cut
+        center_h_store_sp1 = crossxfit(3);
+        center_v_store_sp1 = crosszfit(3);
+    else
+        center_h_store_sp1 = cx(3);
+        center_v_store_sp1 = cz(3);
+    end
     
     variable_store_sp1 = variableValue;
     
@@ -74,9 +79,14 @@ else
         sigma_h_store_sp1(end) = horizontalsize;
         sigma_v_store_sp1(end) = verticalsize;
         
-        center_h_store_sp1(end) = cx(3);
-        center_v_store_sp1(end) = cz(3);
-        
+        if (get(handles.popupmenu_1dsum_sp1,'Value') == 2)  % sum or cut
+            center_h_store_sp1(end) = crossxfit(3);
+            center_v_store_sp1(end) = crosszfit(3);
+        else
+            center_h_store_sp1(end) = cx(3);
+            center_v_store_sp1(end) = cz(3);
+        end
+             
         variable_store_sp1(end) = variableValue;
         
         save('dataplotterstore','variable_store_sp1','NOD_store_sp1','Nh_store_sp1','Nv_store_sp1','N_pxsum_store_sp1','Th_store_sp1','Tv_store_sp1','PSD_store_sp1','OD_store_sp1','npk_store_sp1','sigma_h_store_sp1','sigma_v_store_sp1','center_h_store_sp1','center_v_store_sp1','-append');
@@ -98,8 +108,13 @@ else
         sigma_h_store_sp1 = [sigma_h_store_sp1 horizontalsize];
         sigma_v_store_sp1 = [sigma_v_store_sp1 verticalsize];
         
-        center_h_store_sp1 = [center_h_store_sp1 cx(3)];
-        center_v_store_sp1 = [center_v_store_sp1 cz(3)];
+        if (get(handles.popupmenu_1dsum_sp1,'Value') == 2)  % sum or cut
+            center_h_store_sp1 = [center_h_store_sp1 crossxfit(3)];
+            center_v_store_sp1 = [center_v_store_sp1 crossxfit(3)];
+        else
+            center_h_store_sp1 = [center_h_store_sp1 cx(3)];
+            center_v_store_sp1 = [center_v_store_sp1 cz(3)];
+        end
         
         variable_store_sp1 = [variable_store_sp1 variableValue];
         

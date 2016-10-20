@@ -106,3 +106,6 @@ B_defringed(:,:,1) = reshape(ref_reshaped*cc,[ydim xdim]);
 B = B_defringed;
 
 ana_sp2;
+
+axes(handles.axes_2d_sp2);
+title(['Absorption image of old data set (' filename_sp2 ')'],'Interpreter','none');

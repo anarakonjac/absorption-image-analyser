@@ -49,6 +49,8 @@ switch species
                 set(handles.axes_1dh_sp1,'xlim',[min(handles.xh_sp1) max(handles.xh_sp1)]);
                 set(handles.axes_1dv_sp1,'xlim',[min(handles.xv_sp1) max(handles.xv_sp1)]);
                 
+                datadisp_sp1;
+                
             case 'thomas-fermi'
                 
                 fitloadTF_sp1;
@@ -110,6 +112,8 @@ switch species
                     
                     set(handles.axes_1dh_sp2,'xlim',[min(handles.xh_sp2) max(handles.xh_sp2)]);
                     set(handles.axes_1dv_sp2,'xlim',[min(handles.xv_sp2) max(handles.xv_sp2)]);
+                    
+                    datadisp_sp2;
                     
                     
                 case 'thomas-fermi'

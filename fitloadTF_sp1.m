@@ -18,5 +18,6 @@ crosscut_x = handles.crosscut_x_TF_sp1;
 DGfit = handles.DGfit_sp1;
 Thermfit_pixel = handles.Thermfit_pixel_sp1;
 parabola2D_pixel = handles.parabola2D_pixel_sp1;
+total2Dfit_pixel = handles.total2Dfit_pixel_sp1;
 TF_z = handles.TF_z_sp1;
 TF_x = handles.TF_x_sp1;

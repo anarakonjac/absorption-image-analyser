@@ -46,8 +46,8 @@ DGfit = fminsearch(@fitfun_DG,DGfit,O,Anew,X,Z);
 D2fit = DGfit(1) + DGfit(2)*exp(-(XHI-DGfit(3)).^2/((DGfit(4))^2) - (ZHI-DGfit(5)).^2/((DGfit(6))^2)) ...
         + DGfit(7)*exp(-(XHI-DGfit(8)).^2/((DGfit(9))^2) - (ZHI-DGfit(10)).^2/((DGfit(11))^2));
 
-Thermfit = DGfit(2)*exp(-(XHI-DGfit(3)).^2/((DGfit(4))^2) - (ZHI-DGfit(5)).^2/((DGfit(6))^2));
-Thermfit_pixel = DGfit(2)*exp(-(X-DGfit(3)).^2/((DGfit(4))^2) - (Z-DGfit(5)).^2/((DGfit(6))^2));
+Thermfit = DGfit(2)*exp(-(XHI-DGfit(3)).^2/((DGfit(4))^2) - (ZHI-DGfit(5)).^2/((DGfit(6))^2)) + DGfit(1);
+Thermfit_pixel = DGfit(2)*exp(-(X-DGfit(3)).^2/((DGfit(4))^2) - (Z-DGfit(5)).^2/((DGfit(6))^2)) + DGfit(1);
 
 Condfit = DGfit(7)*exp(-(XHI-DGfit(8)).^2/((DGfit(9))^2) - (ZHI-DGfit(10)).^2/((DGfit(11))^2));
 
@@ -100,7 +100,8 @@ if x_lb < 1
     x_lb = 1;
 end
 
-guessparams_x = [max_x widthGuess_x/1000 position_x];
+%guessparams_x = [max_x widthGuess_x/1000 position_x];
+guessparams_x = [max_x (max_x/(widthGuess_x - position_x)^2) position_x];
 options = optimset('Display','off', 'MaxFunEvals',100000);
 %params_x = lsqcurvefit('para_fit', guessparams_x, x(xx_lb:xx_ub),I1(xx_lb:xx_ub),[],[],options);  % fitting to sum
 params_x = lsqcurvefit('para_fit', guessparams_x, x(x_lb:x_ub), crosscut_x(x_lb:x_ub),[],[],options);
@@ -132,7 +133,7 @@ a = params_x(1);                    % parameter
 b = params_x(2);
 c = params_x(3);
 fun = @(xx) paraFun(xx,a,b,c);    % function of x alone
-intercept_x = fzero(fun,min(x));
+intercept_x = fzero(fun,min(x(x_lb2:x_ub2)));
 
 TF_x = params_x(3) - intercept_x;   % Thomas-Fermi radius
 cloudPos_x = params_x(3);
@@ -160,7 +161,8 @@ if z_lb < 1
     z_lb = 1;
 end
 
-guessparams_z = [max_z widthGuess_z/1000 position_z];
+%guessparams_z = [max_z widthGuess_z/1000 position_z];
+guessparams_z = [max_z (max_z/(widthGuess_z - position_z)^2) position_z];
 options = optimset('Display','off', 'MaxFunEvals',100000);
 %params_z = lsqcurvefit('para_fit', guessparams_z, z(z_lb:z_ub),I1(z_lb:z_ub),[],[],options);  % fit to sum
 params_z = lsqcurvefit('para_fit', guessparams_z, z(z_lb:z_ub), crosscut_z(z_lb:z_ub),[],[],options);
@@ -195,7 +197,7 @@ a = params_z(1);                    % parameter
 b = params_z(2);
 c = params_z(3);
 fun = @(zz) paraFun(zz,a,b,c);    % function of x alone
-intercept_z = fzero(fun,min(z));
+intercept_z = fzero(fun,min(z(z_lb2:z_ub2)));
 
 TF_z = params_z(3) - intercept_z;   % Thomas_Fermi radius
 cloudPos_z = params_z(3);
@@ -207,15 +209,17 @@ fitFun_z_pixels = para_fit(params_z, z);
 %% Bimodal 2D
 
 parabola2D_ini = mean([params_z(1) params_x(1)]) - params_x(2)*(XHI - params_x(3)).^2 - params_z(2)*(ZHI - params_z(3)).^2;
-parabola2D_diff = parabola2D_ini - DGfit(2);
+parabola2D_diff = parabola2D_ini - Thermfit;
 parabola2D = (parabola2D_diff > 0).*parabola2D_diff;  % taking only positive values and subtracting offset from thermal gaussian fit
 
 total2Dfit = Thermfit + parabola2D;
 
 % Coarse version
 parabola2D_ini_pixel = mean([params_z(1) params_x(1)]) - params_x(2)*(X - params_x(3)).^2 - params_z(2)*(Z - params_z(3)).^2;
-parabola2D_diff_pixel = parabola2D_ini_pixel - DGfit(2);
+parabola2D_diff_pixel = parabola2D_ini_pixel - Thermfit_pixel;
 parabola2D_pixel = (parabola2D_diff_pixel > 0).*parabola2D_diff_pixel;  % taking only positive values and subtracting offset from thermal gaussian fit
+
+total2Dfit_pixel = Thermfit_pixel + parabola2D_pixel;
 
 
 %% Plotting:

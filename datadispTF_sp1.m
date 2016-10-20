@@ -39,14 +39,14 @@ thermaspect = thermhorizsize/thermvertsize;
 %condhorizsize  = DGfit(9)/(2^0.5)*pixelsize1;
 
 if viewAngle_sp1 == 0
-    condhorizsize_corrected  = DGfit(9);  % ie no change
+    condhorizsize_corrected  = TF_x;  % ie no change
     condhorizsize = condhorizsize_corrected/(2^0.5)*pixelsize1; % Conversion to rms width and microns
 else
     condhorizsize_corrected  = 1/cos(viewAngle_sp1)*(DGfit(9)^2 - DGfit(11)^2*sin(viewAngle_sp1)^2)^0.5; % Corrected for angle, still in px
     condhorizsize = condhorizsize_corrected/(2^0.5)*pixelsize1; % Conversion to rms width  and microns
 end
 
-condvertsize  = DGfit(11)/(2^0.5)*pixelsize1;
+condvertsize  = TF_z/(2^0.5)*pixelsize1;
 condaspect = condhorizsize/condvertsize;
 
 [nnew,mnew] = size(Anew);
@@ -55,23 +55,26 @@ switch analysis_type_sp1
     
     case 'Classic'
         
-        Ntot = (sum(sum(Anew)) - mnew*nnew*DGfit(1))*pixelsize1^2/sigmatotal;
-        Ntherm = (sum(sum(Thermfit_pixel)) - DGfit(1))*pixelsize1^2/sigmatotal;
+        Ntot = sum(sum(total2Dfit_pixel))*pixelsize1^2/sigmatotal;
+        Ntherm = (sum(sum(Thermfit_pixel)))*pixelsize1^2/sigmatotal;
         Ncond = sum(sum(parabola2D_pixel))*pixelsize1^2/sigmatotal;
+        N_pxsum = handles.A_sum_sp1*pixelsize1^2/sigmatotal;
         
     case 'px-by-px' % untested!
         
         sigma_px = sigma0./(1 + 2*B./Isat_eff + 4*(delta_sp1/gam)^2);
-        Ntot = sum(sum((Anew - DGfit(1))./sigma_px))*pixelsize1^2;
-        Ntherm = sum(sum((Thermfit_pixel - DGfit(1))./sigma_px))*pixelsize1^2;
+        Ntot = sum(sum(total2Dfit_pixel./sigma_px))*pixelsize1^2;
+        Ntherm = sum(sum(Thermfit_pixel./sigma_px))*pixelsize1^2;
         Ncond = sum(sum(parabola2D_pixel./sigma_px))*pixelsize1^2;
+        N_pxsum = sum(sum(A*pixelsize1^2./sigma_px));
         
     case 'High Intensity'   % untested!
         
         sigma_px = sigma0./(1 + 2*B./Isat_eff + 4*(delta_sp1/gam)^2);
-        Ntot = sum(sum((Anew - DGfit(1))./sigma_px))*pixelsize1^2;
-        Ntherm = sum(sum((Thermfit_pixel - DGfit(1))./sigma_px))*pixelsize1^2;
+        Ntot = sum(sum(total2Dfit_pixel./sigma_px))*pixelsize1^2;
+        Ntherm = sum(sum(Thermfit_pixel./sigma_px))*pixelsize1^2;
         Ncond = sum(sum(parabola2D_pixel./sigma_px))*pixelsize1^2;
+        N_pxsum = sum(sum(A*pixelsize1^2./sigma_px));
         
 end
 
@@ -115,27 +118,34 @@ set(handles.text_odtof_sp1,'String',num2str(opticaldepth,'%6.2f'))
 handles.odtof_sp1 = opticaldepth;
 set(handles.text_psd_sp1,'String',num2str(psdensity,'%6.2e'))
 
-set(handles.text_vsigtrap_sp1,'String',num2str(thermvertsize*1d6,'%6.2f'))
-set(handles.text_hsigtrap_sp1,'String',num2str(thermhorizsize*1d6,'%6.2f'))
+set(handles.text_vsigtrap_sp1,'String',num2str(intrapthermvertsize*1d6,'%6.2f'))
+set(handles.text_hsigtrap_sp1,'String',num2str(intrapthermhorizsize*1d6,'%6.2f'))
 set(handles.text_vtemp_sp1,'String',num2str(tempz*1e6,'%8.3f'))
 handles.Tv_sp1 = tempz*1e6;
 set(handles.text_htemp_sp1,'String',num2str(tempx*1e6,'%8.3f'))
 handles.Th_sp1 = tempx*1e6;
 
-set(handles.text_vsigtof_sp1,'String',num2str(condvertsize*1d6,'%6.2f'))
-handles.vsigtof_sp1 = condvertsize*1d6;
-set(handles.text_hsigtof_sp1,'String',num2str(condhorizsize*1d6,'%6.2f'))
-handles.hsigtof_sp1 = condhorizsize*1d6;
-set(handles.text_Npx_sp2,'String',num2str(Ntot,'%6.3e'))
+set(handles.text_vsigtof_sp1,'String',num2str(thermvertsize*1d6,'%6.2f'))
+handles.vsigtof_sp1 = thermvertsize*1d6;
+set(handles.text_hsigtof_sp1,'String',num2str(thermhorizsize*1d6,'%6.2f'))
+handles.hsigtof_sp1 = thermhorizsize*1d6;
+set(handles.text_Npx_sp1,'String',num2str(N_pxsum,'%6.3e'))
+handles.Npx_sp1 = N_pxsum;
+set(handles.text_vnum_sp1,'String',['Nth = ' num2str(Ntherm,'%6.3e')])
+set(handles.text_hnum_sp1,'String',['Nc = ' num2str(Ncond,'%6.3e')])
+set(handles.text_NOD_sp1,'String',num2str(Ntot,'%6.3e'))
 
 DGfit_sp1 = DGfit;
 
 % Condensate part
-set(handles.text_cond_cen_h_sp1,'String',num2str(DGfit(8),'%6.3e'));
-set(handles.text_cond_cen_v_sp1,'String',num2str(DGfit(10),'%6.3e'));
-set(handles.text_tfrad_h_sp1,'String',num2str(DGfit(9),'%6.3e'));
-set(handles.text_tfrad_v_sp1,'String',num2str(DGfit(11),'%6.3e'));
-set(handles.text_tfrad_mic_h_sp1,'String',num2str(DGfit(9)*pixelsize1,'%6.3e'));
-set(handles.text_tfrad_mic_v_sp1,'String',num2str(DGfit(11)*pixelsize2,'%6.3e'));
-set(handles.text_condfrac_sp1,'String',num2str(condensateFraction,'%6.3e'));
-set(handles.text_aspectratio_sp1,'String',num2str(DGfit(9)/DGfit(11),'%6.3e'));
+set(handles.text_cond_cen_h_sp1,'String',num2str(params_x(3),'%6.3f'));
+set(handles.text_cond_cen_v_sp1,'String',num2str(params_z(3),'%6.3f'));
+set(handles.text_tfrad_h_sp1,'String',num2str(TF_x,'%6.3f'));
+handles.TF_x_sp1 = TF_x;
+set(handles.text_tfrad_v_sp1,'String',num2str(TF_z,'%6.3f'));
+handles.TF_z_sp1 = TF_z;
+set(handles.text_tfrad_mic_h_sp1,'String',num2str(TF_x*pixelsize1*1d6,'%6.3f'));
+set(handles.text_tfrad_mic_v_sp1,'String',num2str(TF_z*pixelsize2*1d6,'%6.3f'));
+set(handles.text_condfrac_sp1,'String',num2str(condensateFraction,'%6.3f'));
+handles.condFrac_sp1 = condensateFraction;
+set(handles.text_aspectratio_sp1,'String',num2str(TF_x/TF_z,'%6.3f'));
