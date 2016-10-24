@@ -54,21 +54,18 @@ Condfit = DGfit(7)*exp(-(XHI-DGfit(8)).^2/((DGfit(9))^2) - (ZHI-DGfit(10)).^2/((
 condxcentre = int32(DGfit(8))-ax(1)+1;
 condxcentrehires = int32((DGfit(8)-ax(1))*(resolution-1)/(ax(2)-ax(1))+1);
 
-if condxcentre < 1
-    msgbox('Bad fit along x!','Warning','error')
-    waitforbuttonpress
-    condxcentre = 1;
-    condxcentrehires = 1;
+% What to do when fitted center is off the screen
+if (condxcentre < 1) || (condxcentre > max(x)) || (condxcentrehires < 1) || (condxcentrehires > resolution)
+    condxcentre = round(max(x)/2);
+    condxcentrehires = round(resolution/2);
 end
 
 condzcentre = int32(DGfit(10))-ax(3)+1;
 condzcentrehires = int32((DGfit(10)-ax(3))*(resolution-1)/(ax(4)-ax(3))+1);
 
-if condxcentre < 1
-    msgbox('Bad fit along z!','Warning','error')
-    waitforbuttonpress
-    condzcentre = 1;
-    condzcentrehires = 1;
+if (condzcentre < 1) || (condzcentre > max(z)) || (condzcentrehires < 1) || (condzcentrehires > resolution)
+    condzcentre = round(max(z)/2);
+    condzcentrehires = round(resolution/2);
 end
 
 xdataccut = Anew(condzcentre,:);
