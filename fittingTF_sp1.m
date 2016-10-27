@@ -8,7 +8,17 @@
 fitnewload_sp1
 
 ax(1:2) = ceil(get(handles.axes_2d_sp1,'XLim')); % Sometimes "get" returns non-integers. This is a dangerous fix.
+
+if ax(1) < 1    % sometimes "get" returns negative values!
+    ax(1) = 1;
+end
+
 ax(3:4) = ceil(get(handles.axes_2d_sp1,'YLim'));
+
+if ax(3) < 1
+    ax(3) = 1;
+end
+
 x = ax(1):ax(2);
 z = ax(3):ax(4);
 resolution = 500;
