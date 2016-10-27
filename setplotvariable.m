@@ -45,7 +45,7 @@ elseif menuvalue == 4
         plotvariable_sp1 = Nh_store_sp1;
     end
     
-    if plotdata_sp1 == 1
+    if plotspecies2 == 1
         plotvariable_sp2 = Nh_store_sp2;
     end
     
