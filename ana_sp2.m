@@ -50,7 +50,7 @@ switch analysis_type_sp2
         Isat_eff = Isat_eff*1e-3*(pixelsize1*1e4)^2;    % comment out when calibration is done
         save('configdata','Isat_eff','-append');    % comment out when calibration is done
         
-        A_mod = log((1 - exp(-OD_sat))./(exp(-A_meas) - exp(-OD_sat)));
+        A_mod = log((1 - exp(-OD_sat_sp2))./(exp(-A_meas) - exp(-OD_sat_sp2)));
         A_actual = A_mod + (1 - exp(-A_mod)).*B./Isat_eff;  % See Robert Wild's thesis for details
         A = A_actual;
         
@@ -170,12 +170,24 @@ crossxfit = fminsearch('fitfun',c,O,crossx);
 crossxfitnew = crossxfit;
 Rx = crossxfit(1) + crossxfit(2)*exp(-(x-crossxfit(3)).^2/(crossxfit(4).^2));
 
+if ((crossxfit(3) > 0) && (crossxfit(3) < m))  % checks if fit led to a centre inside the ROI box
+    crossxfit(3) = crossxfit(3);
+else
+    crossxfit(3) = round(m/2);
+end
+
 c = findsta(crossz);
 crosszfit = fminsearch('fitfun',c,O,crossz);
 crosszfitnew = crosszfit;
 Rz = crosszfit(1) + crosszfit(2)*exp(-(z-crosszfit(3)).^2/(crosszfit(4).^2));
 opticaldepth = crosszfit(2) + crosszfit(1);
 % disp(['The optical depth is:' num2str(opticaldepth)]);
+
+if ((crosszfit(3) > 0) && (crosszfit(3) < n))   % checks if fit led to a centre inside the ROI box
+    crosszfit(3) = crosszfit(3);
+else
+    crosszfit(3) = round(n/2);
+end
 
 if (get(handles.popupmenu_1dsum_sp2,'Value') == 2) 
    axes(handles.axes_1dh_sp2);
