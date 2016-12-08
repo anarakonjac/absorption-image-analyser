@@ -43,25 +43,14 @@ switch analysis_type_sp2
     case 'px-by-px'
         
         A_meas = log(B./A); % Measured OD
-        
-        Isat_eff = Isat_eff_sp2;
-        
-        % Temporary Isat_eff calculation, testing only!!
-        Isat_eff = Isat_eff*1e-3*(pixelsize1*1e4)^2;    % comment out when calibration is done
-        save('configdata','Isat_eff','-append');    % comment out when calibration is done
-        
+                
         A_mod = log((1 - exp(-OD_sat_sp2))./(exp(-A_meas) - exp(-OD_sat_sp2)));
-        A_actual = A_mod + (1 - exp(-A_mod)).*B./Isat_eff;  % See Robert Wild's thesis for details
+        A_actual = A_mod + (1 - exp(-A_mod)).*B./Isat_eff_sp2;  % See Robert Wild's thesis for details
         A = A_actual;
         
     case 'High Intensity'
-        
-        Isat_eff = Isat_eff_sp2;
-        
-        % Temporary Isat_eff calculation, testing only!!
-        Isat_eff = Isat_eff*1e-3*(pixelsize1*1e4)^2;    % comment out when calibration is done
-        
-        A = log(B./A) + (B - A)/Isat_eff;   % See Robert Wild's thesis for details
+                
+        A = log(B./A) + (B - A)/Isat_eff_sp2;   % See Robert Wild's thesis for details
         
 end
 

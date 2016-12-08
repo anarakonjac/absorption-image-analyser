@@ -63,25 +63,25 @@ switch analysis_type_sp2
     case 'Classic'
         
         NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigmatotal;
-        Nh = (sum(I1)-cx(1)*length(I1))*pixelsize2/sigmatotal;
+        Nh = (sum(I1)-cx(1)*length(I1))*pixelsize2^2/sigmatotal;
         Nv = (sum(I2)-cz(1)*length(I2))*pixelsize2^2/sigmatotal;
         N_pxsum = handles.A_sum_sp2*pixelsize2^2/sigmatotal;
         
-    case 'px-by-px' % untested!
-        
-        sigma_px = sigma0./(1 + 2*B./Isat_eff + 4*(delta_sp2/gam)^2);
+    case 'px-by-px'   % untested!
+
+        sigma_px = sigma0./(1 + 2*B./Isat_eff_sp2 + 4*(delta_sp2/gam)^2);
         Nh = sum(sum((A - cx(1)/length(I1))./sigma_px))*pixelsize2^2;
         Nv = sum(sum((A' - cz(1)/length(I2))./sigma_px'))*pixelsize2^2;
-        NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
-        N_pxsum = A*pixelsize2^2./sigma_px;
+        NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp2-1)),round(crossxfit(3) - (xcamerapixel_sp2-1)));
+        N_pxsum = sum(sum(A*pixelsize2^2./sigma_px));
         
     case 'High Intensity'   % untested!
         
-        sigma_px = sigma0./(1 + 2*B./Isat_eff + 4*(delta_sp2/gam)^2);
+        sigma_px = sigma0./(1 + 2*B./Isat_eff_sp2 + 4*(delta_sp2/gam)^2);
         Nh = sum(sum((A - cx(1)/length(I1))./sigma_px))*pixelsize2^2;
         Nv = sum(sum((A' - cz(1)/length(I2))./sigma_px'))*pixelsize2^2;
-        NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
-        N_pxsum = A*pixelsize2^2./sigma_px;
+        NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp2-1)),round(crossxfit(3) - (xcamerapixel_sp2-1)));
+        N_pxsum = sum(sum(A*pixelsize2^2./sigma_px));
         
 end
 

@@ -32,24 +32,13 @@ switch analysis_type_sp1
         
         A_meas = log(B./A); % Measured OD
         
-        Isat_eff = Isat_eff_sp1;
-        
-        % Temporary Isat_eff calculation, testing only!!
-        %Isat_eff = Isat_eff*1e-3*(pixelsize1*1e4)^2;    % comment out when calibration is done
-        %save('configdata','Isat_eff','-append');    % comment out when calibration is done
-        
         A_mod = real(log((1 - exp(-OD_sat_sp1))./(exp(-A_meas) - exp(-OD_sat_sp1))));
-        A_actual = A_mod + (1 - exp(-A_mod)).*B./Isat_eff;  % See Robert Wild's thesis for details
-        A = A_actual;
+        A_actual = A_mod + (1 - exp(-A_mod)).*B./Isat_eff_sp1;  % See Robert Wild's thesis for details
+        A = real(A_actual);
         
     case 'High Intensity'
         
-        Isat_eff = Isat_eff_sp1;
-        
-        % Temporary Isat_eff calculation, testing only!!
-        Isat_eff = Isat_eff*1e-3*(pixelsize1*1e4)^2;    % comment out when calibration is done
-        
-        A = log(B./A) + (B - A)/Isat_eff;   % See Robert Wild's thesis for details
+        A = log(B./A) + (B - A)/Isat_eff_sp1;   % See Robert Wild's thesis for details
         
 end
 

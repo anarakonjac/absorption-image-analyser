@@ -4,6 +4,7 @@
 load maindata
 
 A = handles.A_sp1;
+B = handles.B_sp1;
 O = handles.O;
 
 % Draw box with mouse
@@ -41,6 +42,7 @@ ax_sp1(4) = round(ycamerapixel_sp1 + yheight_sp1);
 save('maindata','ax_sp1','yheight_sp1','xwidth_sp1','xcamerapixel_sp1','ycamerapixel_sp1','-append');
 
 Anew = A(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
+Bnew = B(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
 disp(size(Anew));
 Inew1 = sum(Anew);
 Anew = Anew';
@@ -151,6 +153,9 @@ crossx = crossxnew;
 crossz = crossznew;
 crossxfit = crossxfitnew;
 crosszfit = crosszfitnew;
+
+A = Anew;
+B = Bnew;
 
 fitnewsave_sp1;
 datadisp_sp1;   % extract parameters and display in GUI

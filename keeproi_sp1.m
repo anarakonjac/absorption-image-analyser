@@ -6,6 +6,7 @@ if handles.fr_pressed_sp1 == 1
     Anew = A;
 else
     Anew = A(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));  % ax_sp1 defines the ROI
+    Bnew = B(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
 end
 
 disp(size(Anew));
@@ -117,6 +118,9 @@ crossx = crossxnew;
 crossz = crossznew;
 crossxfit = crossxfitnew;
 crosszfit = crosszfitnew;
+
+A = Anew;
+B = Bnew;
 
 fitnewsave_sp1
 

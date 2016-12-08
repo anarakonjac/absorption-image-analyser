@@ -1,4 +1,5 @@
 A = handles.A_sp1;
+B = handles.B_sp1;
 A_sum = handles.A_sum_sp1;
 Anew = handles.A_sp1;
 cx = handles.cx_sp1;

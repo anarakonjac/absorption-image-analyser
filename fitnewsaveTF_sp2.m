@@ -1,4 +1,5 @@
 handles.Anew_TF_sp2 = Anew;
+handles.Bnew_TF_sp2 = B;
 %handles.A_sum_sp2 = A_sum;
 handles.znew_TF_sp2 = z;
 handles.xnew_Tf_sp2 = x;

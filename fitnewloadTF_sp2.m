@@ -1,4 +1,5 @@
 Anew = handles.Anew_TF_sp2;
+Bnew = handles.Bnew_TF_sp2;
 z = handles.znew_TF_sp2;
 x = handles.xnew_Tf_sp2;
 params_z = handles.params_znew_TF_sp2;

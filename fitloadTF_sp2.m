@@ -1,4 +1,5 @@
 A = handles.A_TF_sp2;
+B = handles.B_TF_sp2;
 z = handles.z_TF_sp2;
 x = handles.x_Tf_sp2;
 params_z = handles.params_z_TF_sp2;

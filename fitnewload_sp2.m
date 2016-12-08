@@ -1,4 +1,5 @@
 Anew_sp2 = handles.Anew_sp2;
+Bnew = handles.Bnew_sp2;
 Anew_sum_sp2 = handles.Anew_sum_sp2;
 % cx_sp2 = handles.cxnew_sp2;
 % cz_sp2 = handles.cznew_sp2;
