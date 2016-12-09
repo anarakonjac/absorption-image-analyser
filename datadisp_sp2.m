@@ -72,7 +72,13 @@ switch analysis_type_sp2
         sigma_px = sigma0./(1 + 2*B./Isat_eff_sp2 + 4*(delta_sp2/gam)^2);
         Nh = sum(sum((A - cx(1)/length(I1))./sigma_px))*pixelsize2^2;
         Nv = sum(sum((A' - cz(1)/length(I2))./sigma_px'))*pixelsize2^2;
-        NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp2-1)),round(crossxfit(3) - (xcamerapixel_sp2-1)));
+
+        if roi_used == 1
+            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp2-1)),round(crossxfit(3) - (xcamerapixel_sp2-1)));
+        else
+            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crosszfit(3)));
+        end
+        
         N_pxsum = sum(sum(A*pixelsize2^2./sigma_px));
         
     case 'High Intensity'   % untested!
@@ -80,7 +86,13 @@ switch analysis_type_sp2
         sigma_px = sigma0./(1 + 2*B./Isat_eff_sp2 + 4*(delta_sp2/gam)^2);
         Nh = sum(sum((A - cx(1)/length(I1))./sigma_px))*pixelsize2^2;
         Nv = sum(sum((A' - cz(1)/length(I2))./sigma_px'))*pixelsize2^2;
-        NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp2-1)),round(crossxfit(3) - (xcamerapixel_sp2-1)));
+
+        if roi_used == 1
+            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp2-1)),round(crossxfit(3) - (xcamerapixel_sp2-1)));
+        else
+            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crosszfit(3)));
+        end
+        
         N_pxsum = sum(sum(A*pixelsize2^2./sigma_px));
         
 end

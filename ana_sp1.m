@@ -180,6 +180,7 @@ clear x z %temporary variables, not needed any more;
 
 Anew = A;
 Anew_sum = A_sum;
+Bnew = B;
 
 % Saving original matrix and fit data to handles.
 fitsave_sp1

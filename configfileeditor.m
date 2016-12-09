@@ -984,7 +984,7 @@ elseif speciesoption == 3
     
 end
 
-save('configdata','twospecies','sepspecies','-append');
+save('configdata','twospecies','sepspecies','speciesoption','-append');
 
 
 

@@ -662,7 +662,8 @@ handles.fr_pressed_sp2 = 0;
 
 guidata(hObject, handles);
 
-olddatamenu_sp1
+roi_used = 0;
+olddatamenu_sp1;
 
 guidata(hObject, handles);
 
@@ -1361,6 +1362,7 @@ guidata(hObject, handles);
 
 handles.olddata = 1;
 
+roi_used = 0;
 olddatamenu_sp2;    % unfinished!
 
 load maindata.mat
@@ -2476,6 +2478,8 @@ plotstate = 0;  % Plot current day's data. plotstate = 0 -> plot today's data
                 
 load maindata
 load configdata
+
+roi_used = 0;   % no ROI when first loaded
 
 if sepspecies == 1
     newdatamenu_sp2     % Processes the new images and does everything else

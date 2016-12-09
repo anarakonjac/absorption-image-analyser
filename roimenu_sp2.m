@@ -158,6 +158,8 @@ A = Anew;
 B = Bnew;
 
 fitnewsave_sp2;
+
+roi_used = 1;
 datadisp_sp2;   % extract parameters and display in GUI
 
 switch fittype_sp2
@@ -167,5 +169,7 @@ switch fittype_sp2
         datadispTF_sp2;
         fitnewsaveTF_sp2;
 end
+
+roi_used = 0;
 
 % clear xcamerapixel ycamerapixel xwidth yheight

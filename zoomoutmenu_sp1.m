@@ -59,6 +59,7 @@ switch fittype_sp1
         set(handles.text_coordvalues_sp1,'String',['1,1,' num2str(n) ',' num2str(m)]);
         clear m n
         
+        roi_used = 0;
         datadisp_sp1;   % extract parameters and display in GUI
         
     case 'thomas-fermi'

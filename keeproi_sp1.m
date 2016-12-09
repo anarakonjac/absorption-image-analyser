@@ -125,8 +125,10 @@ B = Bnew;
 fitnewsave_sp1
 
 % Update calculated information in GUI
-keepROI_option_sp1 = 1;
-datadisp_sp1
+keepROI_option_sp1 = 1; % for data plotter storage
+roi_used = 1;   % for determining correct cloud position
+datadisp_sp1;
+roi_used = 0;
 keepROI_option_sp1 = 0;
 
 switch fittype_sp1
@@ -137,4 +139,4 @@ switch fittype_sp1
         fitnewsaveTF_sp1;
 end
 
-clear xcamerapixel_sp1 ycamerapixel_sp1 xwidth_sp1 yheight_sp1
+% clear xcamerapixel_sp1 ycamerapixel_sp1 xwidth_sp1 yheight_sp1
