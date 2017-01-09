@@ -164,6 +164,7 @@ plotstate = 0;  % Plot current day's data. plotstate = 0 -> plot today's data
 load maindata
 load configdata
 
+roi_used = 0;
 newdatamenu     % Processes the new images and does everything else
 
 if (twospecies == 1)
@@ -324,8 +325,12 @@ else
         case 'gaussian'
             
             fitnewload_sp1;
+            A = Anew_sp1;
+            B = Bnew;
             keepROI_option_sp1 = 1;
+            roi_used = 1;
             datadisp_sp1;
+            roi_used = 0;
             keepROI_option_sp1 = 0;
             
         case 'thomas-fermi'
@@ -381,8 +386,12 @@ else
         case 'gaussian'
             
             fitnewload_sp1;
+            A = Anew_sp1;
+            B = Bnew;
             keepROI_option_sp1 = 1;
+            roi_used = 1;
             datadisp_sp1;
+            roi_used = 0;
             keepROI_option_sp1 = 0;
             
         case 'thomas-fermi'
@@ -438,8 +447,12 @@ else
         case 'gaussian'
             
             fitnewload_sp1;
+            A = Anew_sp1;
+            B = Bnew;
             keepROI_option_sp1 = 1;
+            roi_used = 1;
             datadisp_sp1;
+            roi_used = 0;
             keepROI_option_sp1 = 0;
             
         case 'thomas-fermi'
@@ -494,8 +507,12 @@ else
         case 'gaussian'
             
             fitnewload_sp1;
+            A = Anew_sp1;
+            B = Bnew;
             keepROI_option_sp1 = 1;
+            roi_used = 1;
             datadisp_sp1;
+            roi_used = 0;
             keepROI_option_sp1 = 0;
             
         case 'thomas-fermi'
@@ -551,8 +568,12 @@ else
         case 'gaussian'
             
             fitnewload_sp1;
+            A = Anew_sp1;
+            B = Bnew;
             keepROI_option_sp1 = 1;
+            roi_used = 1;
             datadisp_sp1;
+            roi_used = 0;
             keepROI_option_sp1 = 0;
             
         case 'thomas-fermi'
@@ -895,13 +916,17 @@ else
     save('maindata','delta_sp2','-append');
     load maindata
     
-    switch fittype_sp1
+    switch fittype_sp2
         
         case 'gaussian'
             
             fitnewload_sp2;
+            A = Anew_sp2;
+            B = Bnew;
             keepROI_option_sp2 = 1;
+            roi_used = 1;
             datadisp_sp2;
+            roi_used = 0;
             keepROI_option_sp2 = 0;
             
         case 'thomas-fermi'
@@ -952,13 +977,17 @@ else
     save('maindata','tof_sp2','-append');
     load maindata
     
-    switch fittype_sp1
+    switch fittype_sp2
         
         case 'gaussian'
             
             fitnewload_sp2;
+            A = Anew_sp2;
+            B = Bnew;
             keepROI_option_sp2 = 1;
+            roi_used = 1;
             datadisp_sp2;
+            roi_used = 0;
             keepROI_option_sp2 = 0;
             
         case 'thomas-fermi'
@@ -1009,13 +1038,17 @@ else
     save('maindata','xfreq_sp2','-append');
     load maindata
     
-    switch fittype_sp1
+    switch fittype_sp2
         
         case 'gaussian'
             
             fitnewload_sp2;
+            A = Anew_sp2;
+            B = Bnew;
             keepROI_option_sp2 = 1;
+            roi_used = 1;
             datadisp_sp2;
+            roi_used = 0;
             keepROI_option_sp2 = 0;
             
         case 'thomas-fermi'
@@ -1066,13 +1099,17 @@ else
     save('maindata','yfreq_sp2','-append');
     load maindata
     
-    switch fittype_sp1
+    switch fittype_sp2
         
         case 'gaussian'
             
             fitnewload_sp2;
+            A = Anew_sp2;
+            B = Bnew;
             keepROI_option_sp2 = 1;
+            roi_used = 1;
             datadisp_sp2;
+            roi_used = 0;
             keepROI_option_sp2 = 0;
             
         case 'thomas-fermi'
@@ -1123,13 +1160,17 @@ else
     save('maindata','zfreq_sp2','-append');
     load maindata
     
-    switch fittype_sp1
+    switch fittype_sp2
         
         case 'gaussian'
             
             fitnewload_sp2;
+            A = Anew_sp2;
+            B = Bnew;
             keepROI_option_sp2 = 1;
+            roi_used = 1;
             datadisp_sp2;
+            roi_used = 0;
             keepROI_option_sp2 = 0;
             
         case 'thomas-fermi'

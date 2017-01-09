@@ -12,15 +12,17 @@ if handles.fr_pressed_sp2 == 0
     end
 end
 
+load configdata.mat
+load maindata.mat
+
 
 %% Analysis
 
 % If fringe removal is being used, this goes first.
-if useFR_sp2 == 1
-    removefringes_sp2;
-end
+% if useFR_sp2 == 1
+%     removefringes_sp2;
+% end
 
-disp('Subtracting Images and removing outliers');
 A = A - C;    % subtract background
 B = B - C;
 clear C;
@@ -29,9 +31,6 @@ epsilon = min(A(A > 0));     % Checking for and correcting zeros
 A(A <= 0) = epsilon;
 B(B <= 0) = epsilon;
 clear epsilon;
-
-load configdata.mat
-load maindata.mat
 
 % Choose which type of imaging we are doing
 switch analysis_type_sp2
@@ -44,9 +43,9 @@ switch analysis_type_sp2
         
         A_meas = log(B./A); % Measured OD
                 
-        A_mod = log((1 - exp(-OD_sat_sp2))./(exp(-A_meas) - exp(-OD_sat_sp2)));
+        A_mod = real(log((1 - exp(-OD_sat_sp2))./(exp(-A_meas) - exp(-OD_sat_sp2))));
         A_actual = A_mod + (1 - exp(-A_mod)).*B./Isat_eff_sp2;  % See Robert Wild's thesis for details
-        A = A_actual;
+        A = real(A_actual);
         
     case 'High Intensity'
                 
@@ -78,6 +77,7 @@ zoomoutsize = max(ax);
 handles.twodplot_sp2 = imagesc(A);
 set(handles.axes_2d_sp2,'xlim',[ax(1) zoomoutsize],'ylim',[ax(3) zoomoutsize]);
 caxis(colour_sp2)
+axis equal
 xlabel('X (horizontal)')
 ylabel('Z (vertical)')
 
@@ -89,7 +89,6 @@ O = optimset('Display','off','MaxIter',600,'TolFun',1e-7,'TolX',1e-7);
 handles.O = O;
 
 % x fitting:
-disp('Fitting X')
 I1 = sum(A);
 Inew1 = I1; %sums columns of matrix A to create a row vector
 c = findsta(I1);
@@ -108,8 +107,7 @@ handles.onedhplot_sp2 = plot(x,I1,x,R1,'r');
 set(handles.axes_1dh_sp2,'xlim',[ax(1) ax(2)]);
 title('Intensity along x-axis after z-integration (vertical)');
 
-% z fitting:
-disp('Fitting Z')
+% z fit:
 A = A';
 I2 = sum(A);
 Inew2 = I2;
@@ -119,7 +117,6 @@ cz = fminsearch('fitfun',c,O,I2);
 
 if (cz(3) > length(I2) || cz(3) < 1)
     cz(3) = length(I2)/2;
-else
 end
 
 cznew = cz;
@@ -159,10 +156,10 @@ crossxfit = fminsearch('fitfun',c,O,crossx);
 crossxfitnew = crossxfit;
 Rx = crossxfit(1) + crossxfit(2)*exp(-(x-crossxfit(3)).^2/(crossxfit(4).^2));
 
-if ((crossxfit(3) > 0) && (crossxfit(3) < m))  % checks if fit led to a centre inside the ROI box
+if ((crossxfit(3) > 0) && (crossxfit(3) < n))  % checks if fit led to a centre inside the ROI box
     crossxfit(3) = crossxfit(3);
 else
-    crossxfit(3) = round(m/2);
+    crossxfit(3) = round(n/2);
 end
 
 c = findsta(crossz);
@@ -172,21 +169,21 @@ Rz = crosszfit(1) + crosszfit(2)*exp(-(z-crosszfit(3)).^2/(crosszfit(4).^2));
 opticaldepth = crosszfit(2) + crosszfit(1);
 % disp(['The optical depth is:' num2str(opticaldepth)]);
 
-if ((crosszfit(3) > 0) && (crosszfit(3) < n))   % checks if fit led to a centre inside the ROI box
+if ((crosszfit(3) > 0) && (crosszfit(3) < m))   % checks if fit led to a centre inside the ROI box
     crosszfit(3) = crosszfit(3);
 else
-    crosszfit(3) = round(n/2);
+    crosszfit(3) = round(m/2);
 end
 
-if (get(handles.popupmenu_1dsum_sp2,'Value') == 2) 
-   axes(handles.axes_1dh_sp2);
-   handles.onedhplot_sp2 = plot(x,crossx,'b',x,Rx,'r');
-   set(handles.axes_1dh_sp2,'xlim',[ax(1) ax(2)])
-   title('Cross-section along x-axis through center');
-   axes(handles.axes_1dv_sp2);
-   handles.onedvplot_sp2 = plot(z,crossz,'b',z,Rz,'r');
-   set(handles.axes_1dv_sp2,'xlim',[ax(3) ax(4)])
-   title('Cross-section along z-axis through center');
+if (get(handles.popupmenu_1dsum_sp2,'Value') == 2)
+    axes(handles.axes_1dh_sp2);
+    handles.onedhplot_sp2 = plot(x,crossx,'b',x,Rx,'r');
+    set(handles.axes_1dh_sp2,'xlim',[ax(1) ax(2)])
+    title('Cross-section along x-axis through center');
+    axes(handles.axes_1dv_sp2);
+    handles.onedvplot_sp2 = plot(z,crossz,'b',z,Rz,'r');
+    set(handles.axes_1dv_sp2,'xlim',[ax(3) ax(4)])
+    title('Cross-section along z-axis through center');
 end
 
 clear x z %temporary variables, not needed any more; 
