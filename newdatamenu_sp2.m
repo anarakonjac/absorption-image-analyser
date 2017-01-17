@@ -47,6 +47,8 @@ if (dextersyncValue == 1)
     set(handles.text_dexterfilenum_sp2,'String',handles.counterDexter_sp2);
     
     naming = ['_' currentDay currentMonth currentYear '_'];
+    
+    save('maindata','counterDexter','-append');
         
 else
     

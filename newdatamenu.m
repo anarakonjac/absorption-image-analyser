@@ -54,6 +54,8 @@ if (dextersyncValue == 1)
     end
     
     naming = ['_' currentDay currentMonth currentYear '_'];
+    
+    save('maindata','counterDexter','-append');
         
 else
     
