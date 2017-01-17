@@ -176,7 +176,7 @@ handles.NOD_sp2 = NOD;
 set(handles.text_Npx_sp2,'String',num2str(N_pxsum,'%6.3e'))
 handles.Npx_sp2 = N_pxsum;
 
-if varsync == 1
+if (varsync == 1) & (handles.olddata == 0)
     
     if exist(fullfile(varPath, varFilename),'file') == 2
         
