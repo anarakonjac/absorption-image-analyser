@@ -1429,7 +1429,7 @@ handles.variable = get(hObject,'String');
 load maindata
 load configdata
 
-if varsync == 0
+% if varsync == 0
     
     if sepspecies == 0
         
@@ -1460,7 +1460,7 @@ if varsync == 0
         
     end
     
-end
+% end
 
 guidata(hObject, handles);
 

@@ -183,14 +183,20 @@ if varsync == 1
     varfiledata = textscan(logid_var,'%s %s','delimiter',',');
     fclose(logid_var);
     
-    dexterfilenum_mat = cellfun(@str2num,varfiledata{1}(4:end));
-    var_mat = cellfun(@str2num,varfiledata{2}(4:end));
+    dexterfilenum_mat = cellfun(@str2num,varfiledata{1}(1:end));    % change index if the variable sync file has headings
+    var_mat = cellfun(@str2num,varfiledata{2}(1:end));
     
     dex_index = find(dexterfilenum_mat == counterDexter);
     variableValue = var_mat(dex_index);
     
-    set(handles.edit_variable_sp2,'String',num2str(variableValue));
+    if isempty(variableValue)
+            
+            errordlg({'Variable value is non-numeric! Check your variable sync file. Variable value assigned to zero.'},'Bad thing')
+            variableValue = 0;
+            
+    else
     
+    set(handles.edit_variable_sp2,'String',num2str(variableValue));    
     save('maindata','variableValue','-append');
     
 end
