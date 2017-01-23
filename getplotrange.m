@@ -1,9 +1,13 @@
 % getplotrange.m
 % Gets the plot range according to file number from the text box.
 
-load dataplotterstore.mat
+
 load maindata.mat
 load configdata.mat
+
+if exist('dataplotterstore.mat','file') == 2
+    load dataplotterstore.mat
+end
 
 filerange = get(handles.edit_dataplot_range,'String');  % grabs text from text box
 filesToPlot = textscan(filerange, '%s','delimiter',',');
