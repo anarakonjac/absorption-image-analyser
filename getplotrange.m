@@ -105,88 +105,116 @@ end
 
 % Find index of stored data
 
-if plotstate == 0
+if plotstate == 0   % new data
     
-    for ii = 1:1:length(remindex)
+    if ~isempty(remindex)
+    
+        for ii = 1:1:length(remindex)
+            
+            %if (twospecies == 1) && (plotspecies2 == 1)
+            if (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
                 
-        %if (twospecies == 1) && (plotspecies2 == 1)
-        if (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
-            
-            file_index_sp1 = find(counter_store_sp1 == remindex(ii));
-            
-            if plotspecies2 == 1
-                file_index_sp2 = find(counter_store_sp2 == remindex(ii));
+                file_index_sp1 = find(counter_store_sp1 == remindex(ii));
+                
+                if plotspecies2 == 1
+                    file_index_sp2 = find(counter_store_sp2 == remindex(ii));
+                end
+                
+                %elseif (sepspecies == 1) && (plotspecies2 == 1)
+            elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1) && (plotspecies2 == 1)
+                
+                if exist('counter_store_sp1','var') && exist('counter_store_sp2','var')
+                    file_index_sp2 = find(counter_store_sp2 == remindex(ii));
+                elseif exist('counter_store_sp1','var') && ~exist('counter_store_sp2','var')
+                    file_index_sp1 = find(counter_store_sp1 == remindex(ii));
+                elseif ~exist('counter_store_sp1','var') && exist('counter_store_sp2','var')
+                    file_index_sp2 = find(counter_store_sp2 == remindex(ii));
+                end
+                
+            else
+                
+                file_index_sp1 = find(counter_store_sp1 == remindex(ii));
+                
             end
             
-        %elseif (sepspecies == 1) && (plotspecies2 == 1)
-        elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1) && (plotspecies2 == 1)
-            
-            if exist('counter_store_sp1','var') && exist('counter_store_sp2','var')                
-                file_index_sp2 = find(counter_store_sp2 == remindex(ii));                
-            elseif exist('counter_store_sp1','var') && ~exist('counter_store_sp2','var')                
-                file_index_sp1 = find(counter_store_sp1 == remindex(ii));                
-            elseif ~exist('counter_store_sp1','var') && exist('counter_store_sp2','var')                
-                file_index_sp2 = find(counter_store_sp2 == remindex(ii));                
+            %if (sepspecies == 0) || ((sepspecies == 1) && (plotspecies2 == 0))
+            if plotdata_sp1 == 1
+                
+                if isempty(file_index_sp1)
+                    file_index_string = num2str(remindex(ii));
+                    %         datamsg = msgbox(['File ' file_index_string ' does not exist!']);
+                else
+                    stored_index_sp1(ii) = file_index_sp1;
+                end
+                
             end
             
-        else
+            %if ((twospecies == 1) && (plotspecies2 == 1)) || ((sepspecies == 1) && (plotspecies2 == 1))
+            if (plotdata_sp2 == 1) && (plotspecies2 == 1)
+                
+                if ~isempty(file_index_sp2)
+                    stored_index_sp2(ii) = file_index_sp2;
+                end
+                
+            end
             
-            file_index_sp1 = find(counter_store_sp1 == remindex(ii));
-            
+        end
+    
+    else
+        
+        if plotdata_sp1 == 1
+            stored_index_sp1 = [];
         end
         
-        %if (sepspecies == 0) || ((sepspecies == 1) && (plotspecies2 == 0))
-        if plotdata_sp1 == 1
-            
-            if isempty(file_index_sp1)
-                file_index_string = num2str(remindex(ii));
-                %         datamsg = msgbox(['File ' file_index_string ' does not exist!']);
-            else
-                stored_index_sp1(ii) = file_index_sp1;
-            end
-            
-        end
-                        
-        %if ((twospecies == 1) && (plotspecies2 == 1)) || ((sepspecies == 1) && (plotspecies2 == 1))
-        if (plotdata_sp2 == 1) && (plotspecies2 == 1)
-            
-            if ~isempty(file_index_sp2)
-                stored_index_sp2(ii) = file_index_sp2;
-            end
-            
+        if plotdata_sp2 == 1
+            stored_index_sp2 = [];
         end
         
     end
     
-else
+else   % saved data
     
-    for ii = 1:1:length(remindex)
-        
-        if plotdata_sp1 == 1
+    if ~isempty(remindex)
+    
+        for ii = 1:1:length(remindex)
             
-            filePos_cell = ismember(lfc_sp1{3}(dataIndex_sp1),num2str(remindex(ii)));
-            file_index_sp1 = find(filePos_cell) + min(dataIndex_sp1) - 1;
-            
-            if ~isempty(file_index_sp1)
-                stored_index_sp1(ii) = file_index_sp1;
+            if plotdata_sp1 == 1
+                
+                filePos_cell = ismember(lfc_sp1{3}(dataIndex_sp1),num2str(remindex(ii)));
+                file_index_sp1 = find(filePos_cell) + min(dataIndex_sp1) - 1;
+                
+                if ~isempty(file_index_sp1)
+                    stored_index_sp1(ii) = file_index_sp1;
+                end
+                
             end
             
+            if plotdata_sp2 == 1
+                
+                filePos_cell = ismember(lfc_sp2{3}(dataIndex_sp2),num2str(remindex(ii)));
+                file_index_sp2 = find(filePos_cell) + min(dataIndex_sp2) - 1;
+                
+                if ~isempty(file_index_sp2)
+                    stored_index_sp2(ii) = file_index_sp2;
+                end
+                
+            end
+        end
+        
+    else % what do do if data plotter asks for images that don't exist
+        
+        if plotdata_sp1 == 1
+            stored_index_sp1 = [];
         end
         
         if plotdata_sp2 == 1
-            
-            filePos_cell = ismember(lfc_sp2{3}(dataIndex_sp2),num2str(remindex(ii)));
-            file_index_sp2 = find(filePos_cell) + min(dataIndex_sp2) - 1;
-            
-            if ~isempty(file_index_sp2)
-                stored_index_sp2(ii) = file_index_sp2;
-            end
-            
-        end        
-    end    
+            stored_index_sp2 = [];
+        end
+        
+    end
 end
 
-if plotstate == 0
+if plotstate == 0   % new data
     
     if plotdata_sp1 == 1
         stored_index_sp1 = stored_index_sp1(find(stored_index_sp1));
@@ -196,7 +224,7 @@ if plotstate == 0
         stored_index_sp2 = stored_index_sp2(find(stored_index_sp2));
     end
     
-else
+else    % saved data
     
     if plotdata_sp1 == 1
         stored_index_sp1 = stored_index_sp1(find(stored_index_sp1));
