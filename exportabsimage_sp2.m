@@ -16,8 +16,8 @@ A_save = Anew_sp2;
 
 figure(72)
 imagesc(xpts,ypts,A_save)
-% colour = str2num(get(handles.edit_ODrange_sp2,'String'));
-% axes(handles.axes_2d_sp2);
 caxis(colour_sp2)
+colormap(abs_colormap_sp2)
 axis equal
 axis tight
+title([element_sp2 filename_sp2],'Interpreter','none')

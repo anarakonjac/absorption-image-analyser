@@ -22,7 +22,7 @@ function varargout = ImageAnalyser(varargin)
 
 % Edit the above text to modify the response to help ImageAnalyser
 
-% Last Modified by GUIDE v2.5 02-Aug-2016 16:58:16
+% Last Modified by GUIDE v2.5 09-Mar-2017 15:39:30
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -2767,3 +2767,12 @@ function edit_label_sp2_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --------------------------------------------------------------------
+function menu_ploteverything_Callback(hObject, eventdata, handles)
+% hObject    handle to menu_ploteverything (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+ploteverything;

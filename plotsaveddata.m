@@ -72,7 +72,7 @@ if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     x1_points_sp1 = setplotvariable_saveddata(menuvalue_x1,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     y1_points_sp1 = setplotvariable_saveddata(menuvalue_y1,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     
-    plot(x1_points_sp1,y1_points_sp1,'x')
+    plot(x1_points_sp1,y1_points_sp1,'s')
     
 elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1)
     
@@ -90,7 +90,7 @@ elseif (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
     y1_points_sp2 = setplotvariable_saveddata(menuvalue_y1,filenum_sp2,variable,NOD_sp2,Nh_sp2,Nv_sp2,N_pxsum_sp2,Th_sp2,Tv_sp2,PSD_sp2,OD_sp2,npk_sp2,sigma_h_sp2,sigma_v_sp2,center_h_sp2,center_v_sp2);
     
     [hAx,hLine1,hLine2] = plotyy(x1_points_sp1,y1_points_sp1,x1_points_sp2,y1_points_sp2);
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -120,7 +120,7 @@ if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     x2_points_sp1 = setplotvariable_saveddata(menuvalue_x2,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     y2_points_sp1 = setplotvariable_saveddata(menuvalue_y2,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     
-    plot(x2_points_sp1,y2_points_sp1,'x')
+    plot(x2_points_sp1,y2_points_sp1,'s')
     
 elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1)
     
@@ -138,7 +138,7 @@ elseif (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
     y2_points_sp2 = setplotvariable_saveddata(menuvalue_y2,filenum_sp2,variable,NOD_sp2,Nh_sp2,Nv_sp2,N_pxsum_sp2,Th_sp2,Tv_sp2,PSD_sp2,OD_sp2,npk_sp2,sigma_h_sp2,sigma_v_sp2,center_h_sp2,center_v_sp2);
     
     [hAx,hLine1,hLine2] = plotyy(x2_points_sp1,y2_points_sp1,x2_points_sp2,y2_points_sp2);
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -168,7 +168,7 @@ if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     x3_points_sp1 = setplotvariable_saveddata(menuvalue_x3,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     y3_points_sp1 = setplotvariable_saveddata(menuvalue_y3,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     
-    plot(x3_points_sp1,y3_points_sp1,'x')
+    plot(x3_points_sp1,y3_points_sp1,'s')
     
 elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1)
     
@@ -186,7 +186,7 @@ elseif (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
     y3_points_sp2 = setplotvariable_saveddata(menuvalue_y3,filenum_sp2,variable,NOD_sp2,Nh_sp2,Nv_sp2,N_pxsum_sp2,Th_sp2,Tv_sp2,PSD_sp2,OD_sp2,npk_sp2,sigma_h_sp2,sigma_v_sp2,center_h_sp2,center_v_sp2);
     
     [hAx,hLine1,hLine2] = plotyy(x3_points_sp1,y3_points_sp1,x3_points_sp2,y3_points_sp2);
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -216,7 +216,7 @@ if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     x4_points_sp1 = setplotvariable_saveddata(menuvalue_x4,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     y4_points_sp1 = setplotvariable_saveddata(menuvalue_y4,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     
-    plot(x4_points_sp1,y4_points_sp1,'x')
+    plot(x4_points_sp1,y4_points_sp1,'s')
     
 elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1)
     
@@ -234,7 +234,7 @@ elseif (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
     y4_points_sp2 = setplotvariable_saveddata(menuvalue_y4,filenum_sp2,variable,NOD_sp2,Nh_sp2,Nv_sp2,N_pxsum_sp2,Th_sp2,Tv_sp2,PSD_sp2,OD_sp2,npk_sp2,sigma_h_sp2,sigma_v_sp2,center_h_sp2,center_v_sp2);
     
     [hAx,hLine1,hLine2] = plotyy(x4_points_sp1,y4_points_sp1,x4_points_sp2,y4_points_sp2);
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -264,7 +264,7 @@ if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     x5_points_sp1 = setplotvariable_saveddata(menuvalue_x5,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     y5_points_sp1 = setplotvariable_saveddata(menuvalue_y5,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     
-    plot(x5_points_sp1,y5_points_sp1,'x')
+    plot(x5_points_sp1,y5_points_sp1,'s')
     
 elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1)
     
@@ -282,7 +282,7 @@ elseif (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
     y5_points_sp2 = setplotvariable_saveddata(menuvalue_y5,filenum_sp2,variable,NOD_sp2,Nh_sp2,Nv_sp2,N_pxsum_sp2,Th_sp2,Tv_sp2,PSD_sp2,OD_sp2,npk_sp2,sigma_h_sp2,sigma_v_sp2,center_h_sp2,center_v_sp2);
     
     [hAx,hLine1,hLine2] = plotyy(x5_points_sp1,y5_points_sp1,x5_points_sp2,y5_points_sp2);
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -312,7 +312,7 @@ if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     x6_points_sp1 = setplotvariable_saveddata(menuvalue_x6,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     y6_points_sp1 = setplotvariable_saveddata(menuvalue_y6,filenum_sp1,variable,NOD_sp1,Nh_sp1,Nv_sp1,N_pxsum_sp1,Th_sp1,Tv_sp1,PSD_sp1,OD_sp1,npk_sp1,sigma_h_sp1,sigma_v_sp1,center_h_sp1,center_v_sp1);
     
-    plot(x6_points_sp1,y6_points_sp1,'x')
+    plot(x6_points_sp1,y6_points_sp1,'s')
     
 elseif (plotdata_sp1 == 0) && (plotdata_sp2 == 1)
     
@@ -330,7 +330,7 @@ elseif (plotdata_sp1 == 1) && (plotdata_sp2 == 1)
     y6_points_sp2 = setplotvariable_saveddata(menuvalue_y6,filenum_sp2,variable,NOD_sp2,Nh_sp2,Nv_sp2,N_pxsum_sp2,Th_sp2,Tv_sp2,PSD_sp2,OD_sp2,npk_sp2,sigma_h_sp2,sigma_v_sp2,center_h_sp2,center_v_sp2);
     
     [hAx,hLine1,hLine2] = plotyy(x6_points_sp1,y6_points_sp1,x6_points_sp2,y6_points_sp2);
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';

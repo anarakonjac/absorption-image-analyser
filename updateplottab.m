@@ -44,7 +44,7 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x1_points_sp1(stored_index_sp1),y1_points_sp1(stored_index_sp1),'x')   
+    plot(x1_points_sp1(stored_index_sp1),y1_points_sp1(stored_index_sp1),'s')   
     axis tight
     
 end
@@ -59,7 +59,7 @@ end
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x1_points_sp1(stored_index_sp1),y1_points_sp1(stored_index_sp1),x1_points_sp2(stored_index_sp2),y1_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -90,7 +90,7 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x2_points_sp1(stored_index_sp1),y2_points_sp1(stored_index_sp1),'x')
+    plot(x2_points_sp1(stored_index_sp1),y2_points_sp1(stored_index_sp1),'s')
     axis tight
     
 end
@@ -105,7 +105,7 @@ end
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x2_points_sp1(stored_index_sp1),y2_points_sp1(stored_index_sp1),x2_points_sp2(stored_index_sp2),y2_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -136,7 +136,7 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x3_points_sp1(stored_index_sp1),y3_points_sp1(stored_index_sp1),'x')
+    plot(x3_points_sp1(stored_index_sp1),y3_points_sp1(stored_index_sp1),'s')
     axis tight
     
 end
@@ -151,7 +151,7 @@ end
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
         
     [hAx,hLine1,hLine2] = plotyy(x3_points_sp1(stored_index_sp1),y3_points_sp1(stored_index_sp1),x3_points_sp2(stored_index_sp2),y3_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -182,7 +182,7 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x4_points_sp1(stored_index_sp1),y4_points_sp1(stored_index_sp1),'x')
+    plot(x4_points_sp1(stored_index_sp1),y4_points_sp1(stored_index_sp1),'s')
     axis tight
     
 end
@@ -197,7 +197,7 @@ end
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x4_points_sp1(stored_index_sp1),y4_points_sp1(stored_index_sp1),x4_points_sp2(stored_index_sp2),y4_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -228,7 +228,7 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x5_points_sp1(stored_index_sp1),y5_points_sp1(stored_index_sp1),'x')
+    plot(x5_points_sp1(stored_index_sp1),y5_points_sp1(stored_index_sp1),'s')
     axis tight
     
 end
@@ -243,7 +243,7 @@ end
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x5_points_sp1(stored_index_sp1),y5_points_sp1(stored_index_sp1),x5_points_sp2(stored_index_sp2),y5_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
@@ -274,7 +274,7 @@ end
 
 if (plotdata_sp1 == 1) && (plotdata_sp2 == 0)
     
-    plot(x6_points_sp1(stored_index_sp1),y6_points_sp1(stored_index_sp1),'x')
+    plot(x6_points_sp1(stored_index_sp1),y6_points_sp1(stored_index_sp1),'s')
     axis tight
     
 end
@@ -289,7 +289,7 @@ end
 if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     
     [hAx,hLine1,hLine2] = plotyy(x6_points_sp1(stored_index_sp1),y6_points_sp1(stored_index_sp1),x6_points_sp2(stored_index_sp2),y6_points_sp2(stored_index_sp2));
-    hLine1.Marker = 'x';
+    hLine1.Marker = 's';
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
