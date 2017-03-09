@@ -5,7 +5,7 @@ switch species
     
     case 'sp1'
                 
-        A = handles.Anew_sp1;
+        A = handles.A_sp1;
         
         [x,y] = ginput(1);
         
@@ -32,7 +32,7 @@ switch species
         
     case 'sp2'
         
-        A = handles.Anew_sp2;
+        A = handles.A_sp2;
         
         [x,y] = ginput(1);
         
