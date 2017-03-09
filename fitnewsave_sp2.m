@@ -13,3 +13,5 @@ handles.crossxnew_sp2 = crossx;
 handles.crossznew_sp2 = crossz;
 handles.crossxfitnew_sp2 = crossxfit;
 handles.crosszfitnew_sp2 = crosszfit;
+
+guidata(hObject, handles);

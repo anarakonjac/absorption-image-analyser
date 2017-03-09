@@ -23,3 +23,5 @@ handles.parabola2D_pixelnew_sp2 = parabola2D_pixel;
 handles.total2Dfit_pixelnew_sp2 = total2Dfit_pixel;
 handles.TF_znew_sp2 = TF_z;
 handles.TF_xnew_sp2 = TF_x;
+
+guidata(hObject, handles);
