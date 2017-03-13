@@ -51,6 +51,10 @@ switch analysis_type_sp2
                 
         A = log(B./A) + (B - A)/Isat_eff_sp2;   % See Robert Wild's thesis for details
         
+    case 'Faraday'
+        
+        A = A - B;
+        
 end
 
 % Apply Fourier filter

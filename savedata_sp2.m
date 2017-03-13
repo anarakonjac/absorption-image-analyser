@@ -27,7 +27,7 @@ else
     if (dextersyncValue == 0)
         snum = ismember(lfc_sp2{3},['M' get(handles.edit_counter_sp1,'String')]);
     else
-        snum = ismember(lfc_sp2{3},get(handles.dexterfilenum,'String'));
+        snum = ismember(lfc_sp2{3},get(handles.dexterfilenum_sp2,'String'));
     end
     
 end
@@ -61,14 +61,14 @@ else
     if (dextersyncValue == 0)
         num_log = ['M' get(handles.edit_counter_sp1,'String')];
     else
-        num_log = get(handles.dexterfilenum,'String');
+        num_log = get(handles.dexterfilenum_sp2,'String');
     end
     
     lfc_sp2{3}{recpos} = num_log; % Counter
     
 end
 
-lfc_sp2{4}{recpos} = get(handles.edit_variable,'String'); % Control voltage
+lfc_sp2{4}{recpos} = get(handles.edit_variable_sp2,'String'); % Control voltage
 lfc_sp2{5}{recpos} = num2str(handles.odtof_sp2,'%6.3f'); % Optical depth
 lfc_sp2{6}{recpos} = num2str(handles.sig_h_sp2,'%6.3f'); % Sigma H TOF (px)
 lfc_sp2{7}{recpos} = num2str(handles.sig_v_sp2,'%6.3f'); % Sigma V TOF (px)
