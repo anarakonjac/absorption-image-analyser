@@ -81,9 +81,9 @@ if (exist(strcat(imagedir_sp1,dataA_sp1)) & exist(strcat(imagedir_sp1,dataB_sp1)
     % ImageAnalyser expects the file names to be in this format:
     % 'data00x.asc'. If you don't like this, you can rename them here.
     
-    A = loadascii(strcat(imagedir_sp1,dataA_sp1),strcat('Rb001')); %atoms in cloud + background
-    B = loadascii(strcat(imagedir_sp1,dataB_sp1),strcat('Rb002')); %probe + background only 
-    C = loadascii(strcat(imagedir_sp1,dataC_sp1),strcat('Rb003')); %background
+    A = loadascii(strcat(imagedir_sp1,dataA_sp1),strcat(dataA_sp1)); %atoms in cloud + background
+    B = loadascii(strcat(imagedir_sp1,dataB_sp1),strcat(dataB_sp1)); %probe + background only 
+    C = loadascii(strcat(imagedir_sp1,dataC_sp1),strcat(dataC_sp1)); %background
     % Note that loadascii rotates the image 90 degrees for some reason.
     
     A = rot90(A,numrotations_sp1);
@@ -94,9 +94,9 @@ if (exist(strcat(imagedir_sp1,dataA_sp1)) & exist(strcat(imagedir_sp1,dataB_sp1)
         
         if (exist(strcat(imagedir_sp2,dataA_sp2)) & exist(strcat(imagedir_sp2,dataB_sp2)) & exist(strcat(imagedir_sp2,dataC_sp2)))
             
-            D = loadascii(strcat(imagedir_sp2,dataA_sp2),strcat('data004')); %atoms in cloud + background
-            E = loadascii(strcat(imagedir_sp2,dataB_sp2),strcat('data005')); %probe + background only
-            F = loadascii(strcat(imagedir_sp2,dataC_sp2),strcat('data006')); %background
+            D = loadascii(strcat(imagedir_sp2,dataA_sp2),strcat(,dataA_sp2)); %atoms in cloud + background
+            E = loadascii(strcat(imagedir_sp2,dataB_sp2),strcat(dataB_sp2)); %probe + background only
+            F = loadascii(strcat(imagedir_sp2,dataC_sp2),strcat(dataC_sp2)); %background
             
             D = rot90(D,numrotations_sp2);
             E = rot90(E,numrotations_sp2);

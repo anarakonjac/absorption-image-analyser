@@ -69,9 +69,9 @@ end
 
 if (exist(strcat(imagedir_sp2,dataA_sp2)) & exist(strcat(imagedir_sp2,dataB_sp2)) & exist(strcat(imagedir_sp2,dataC_sp2)))
     
-    D = loadascii(strcat(imagedir_sp2,dataA_sp2),strcat('data004')); %atoms in cloud + background
-    E = loadascii(strcat(imagedir_sp2,dataB_sp2),strcat('data005')); %probe + background only
-    F = loadascii(strcat(imagedir_sp2,dataC_sp2),strcat('data006')); %background
+    D = loadascii(strcat(imagedir_sp2,dataA_sp2),strcat(dataA_sp2)); %atoms in cloud + background
+    E = loadascii(strcat(imagedir_sp2,dataB_sp2),strcat(dataB_sp2)); %probe + background only
+    F = loadascii(strcat(imagedir_sp2,dataC_sp2),strcat(dataC_sp2)); %background
     
     D = rot90(D,numrotations_sp2);
     E = rot90(E,numrotations_sp2);
