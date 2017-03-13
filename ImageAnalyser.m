@@ -2326,15 +2326,18 @@ currentDay = num2str(day(date),'%02d');
 % Plot from current day or old saved data
 if plotstate == 1   % plots saved data
     
-    pathname = [storagePath '\' currentYear '\' currentMonth '\' currentDay];
-    directoryname = uigetdir(pathname);
+    handles.plotsaved = 1;
+    pathname = [storagePath filesep currentYear filesep currentMonth filesep currentDay];
+    [filename_plot_sp1,directoryname] = uigetfile([pathname filesep '*.asc']);
     set(handles.text_plotdate,'String',['Data from ' directoryname]);
-    rootPlot = [directoryname((end - 1):end) directoryname((end - 5):(end - 3))];
-    yearPlot = directoryname((end - 10):(end - 7));
-    save('maindata','rootPlot','yearPlot','-append');
+    rootPlot = filename_plot_sp1(8:12);
+    yearPlot = filename_plot_sp1(13:16);
+    filename_plot_sp2 = filename_plot_sp1;
+    save('maindata','rootPlot','yearPlot','filename_plot_sp1','filename_plot_sp2','-append');
     
 else
     
+    handles.plotsaved = 0;
     set(handles.text_plotdate,'String','Plot as you go!');
     
 end

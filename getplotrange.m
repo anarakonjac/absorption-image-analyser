@@ -22,7 +22,7 @@ if plotstate == 1   % for plotting saved data
     
     if plotdata_sp1 == 1
         
-        loadlog_sp1;    % loads saved data log file
+        loadlogPlotter_sp1;    % loads saved data log file
         dataCellIndices = strfind(lfc_sp1{2},rootPlot); % finds cells with correct date (can't use "find" function for cells)
         dataCellMatrix = ~cellfun('isempty',dataCellIndices);  % gets nonzero
         dataIndex_sp1 = find(dataCellMatrix);

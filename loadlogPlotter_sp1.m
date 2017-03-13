@@ -10,16 +10,16 @@ else
     logpath = [logPath '/'];
 end
 
-if handles.olddata == 1
+if handles.plotsaved == 1
     
-    underscoreIndex = find(filename_sp1 == '_');
-    periodIndex = find(filename_sp1 == '.');
-    year_log = filename_sp1((underscoreIndex(1) + 6):(underscoreIndex(1) + 9));
-    month_log = filename_sp1((underscoreIndex(1) + 3):(underscoreIndex(1) + 5));
-    day_log = filename_sp1((underscoreIndex(1) + 1):(underscoreIndex(1) + 2));
-    num_log = filename_sp1((underscoreIndex(end) + 1):(periodIndex - 1));
+    underscoreIndex = find(filename_plot_sp1 == '_');
+    periodIndex = find(filename_plot_sp1 == '.');
+    year_log = filename_plot_sp1((underscoreIndex(1) + 6):(underscoreIndex(1) + 9));
+    month_log = filename_plot_sp1((underscoreIndex(1) + 3):(underscoreIndex(1) + 5));
+    day_log = filename_plot_sp1((underscoreIndex(1) + 1):(underscoreIndex(1) + 2));
+    num_log = filename_plot_sp1((underscoreIndex(end) + 1):(periodIndex - 1));
     
-    element_sp1 = filename_sp1(2:(underscoreIndex(1) - 1));
+    element_sp1 = filename_plot_sp1(2:(underscoreIndex(1) - 1));
         
 else
     year_log = num2str(year(date));
