@@ -63,8 +63,7 @@ if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
-    
+        
 end
 
 xlabel(x1_label)
@@ -109,7 +108,7 @@ if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    %axis tight
     
 end
 
@@ -155,7 +154,7 @@ if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    %axis tight
     
 end
 
@@ -201,7 +200,7 @@ if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    %axis tight
     
 end
 
@@ -247,7 +246,7 @@ if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    %axis tight
     
 end
 
@@ -293,7 +292,7 @@ if (plotspecies2 == 1) && (plotdata_sp2 == 1) && (plotdata_sp1 == 1)
     hLine2.Marker = 'o';
     hLine1.LineStyle = 'none';
     hLine2.LineStyle = 'none';
-    axis tight
+    %axis tight
     
 end
 

@@ -27,7 +27,7 @@ else
     if (dextersyncValue == 0)
         snum = ismember(lfc_sp2{3},['M' get(handles.edit_counter_sp1,'String')]);
     else
-        snum = ismember(lfc_sp2{3},get(handles.dexterfilenum_sp2,'String'));
+        snum = ismember(lfc_sp2{3},get(handles.text_dexterfilenum_sp2,'String'));
     end
     
 end
@@ -61,7 +61,7 @@ else
     if (dextersyncValue == 0)
         num_log = ['M' get(handles.edit_counter_sp1,'String')];
     else
-        num_log = get(handles.dexterfilenum_sp2,'String');
+        num_log = get(handles.text_dexterfilenum_sp2,'String');
     end
     
     lfc_sp2{3}{recpos} = num_log; % Counter
