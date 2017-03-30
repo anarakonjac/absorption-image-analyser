@@ -167,12 +167,6 @@ load configdata
 roi_used = 0;
 newdatamenu     % Processes the new images and does everything else
 
-if (twospecies == 1)
-    if useROI_sp2 == 1
-        keeproi_sp2
-    end
-end
-
 if inspmsg_state == 1
     inspmsg;
 end
