@@ -813,7 +813,7 @@ function edit_FRfiles_sp1_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of edit_FRfiles_sp1 as a double
 
 ref_files_sp1 = get(handles.edit_FRfiles_sp1,'String');
-refnums_sp1 = textscan(cell2mat(ref_files_sp1), '%s','delimiter',',');
+refnums_sp1 = textscan(ref_files_sp1, '%s','delimiter',',');
 
 refnums_sp1 = refnums_sp1{1};
 
@@ -866,7 +866,7 @@ function edit_FRfiles_sp2_Callback(hObject, eventdata, handles)
 %        str2double(get(hObject,'String')) returns contents of edit_FRfiles_sp2 as a double
 
 ref_files_sp2 = get(handles.edit_FRfiles_sp2,'String');
-refnums_sp2 = textscan(cell2mat(ref_files_sp2), '%s','delimiter',',');
+refnums_sp2 = textscan(ref_files_sp2, '%s','delimiter',',');
 
 refnums_sp2 = refnums_sp2{1};
 

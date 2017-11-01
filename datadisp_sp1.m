@@ -70,10 +70,18 @@ switch analysis_type_sp1
         Nh = sum(sum((A - cx(1)/length(I1))./sigma_px))*pixelsize1^2;
         Nv = sum(sum((A' - cz(1)/length(I2))./sigma_px'))*pixelsize1^2;
         
-        if roi_used == 1
-            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp1-1)),round(crossxfit(3) - (xcamerapixel_sp1-1)));
+        if exist('roi_used') == 1
+            if roi_used == 1
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp1-1)),round(crossxfit(3) - (xcamerapixel_sp1-1)));
+            else
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
+            end
         else
-            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
+            if useROI_sp1 == 1
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp1-1)),round(crossxfit(3) - (xcamerapixel_sp1-1)));
+            else
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
+            end
         end
         
         N_pxsum = sum(sum(A*pixelsize1^2./sigma_px));
@@ -84,10 +92,18 @@ switch analysis_type_sp1
         Nh = sum(sum((A - cx(1)/length(I1))./sigma_px))*pixelsize1^2;
         Nv = sum(sum((A' - cz(1)/length(I2))./sigma_px'))*pixelsize1^2;
         
-        if roi_used == 1
-            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp1-1)),round(crossxfit(3) - (xcamerapixel_sp1-1)));
+        if exist('roi_used') == 1
+            if roi_used == 1
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp1-1)),round(crossxfit(3) - (xcamerapixel_sp1-1)));
+            else
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
+            end
         else
-            NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
+            if useROI_sp1 == 1
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3) - (ycamerapixel_sp1-1)),round(crossxfit(3) - (xcamerapixel_sp1-1)));
+            else
+                NOD = 2*opticaldepth*pi*verticalsize*horizontalsize/sigma_px(round(crosszfit(3)),round(crossxfit(3)));
+            end
         end
         
         N_pxsum = sum(sum(A*pixelsize1^2./sigma_px));
