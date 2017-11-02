@@ -9,7 +9,7 @@ fitnewload_sp1
 xlimits = get(handles.axes_1dh_sp1,'XLim');
 ylimits = get(handles.axes_1dv_sp1,'XLim');
 
-Anew_sp1 = Anew_sp1(ylimits(1):ylimits(2),xlimits(1):xlimits(2));
+%Anew_sp1 = Anew_sp1(ylimits(1):ylimits(2),xlimits(1):xlimits(2));
 
 x = xlimits(1):xlimits(2);
 y = ylimits(1):ylimits(2);
