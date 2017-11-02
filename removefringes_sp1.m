@@ -51,8 +51,14 @@ else
     
 end
 
-A = load([currentPath astorename_sp1]);
-C = load([currentPath cstorename_sp1]);
+% Rotation nonsense to get orientation right
+A = loadascii([currentPath astorename_sp1]);
+%B = loadascii([currentPath bstorename_sp1]);
+C = loadascii([currentPath cstorename_sp1]);
+
+A = rot90(A,numrotations_sp1);
+%B = rot90(B,numrotations_sp1);
+C = rot90(C,numrotations_sp1);
 
 if useROI_sp1 == 1 
     A = A(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
@@ -70,7 +76,8 @@ filename_chopped = frName_sp1(1:underscoreIndex(2));
 for ii = 1:1:length(refindex_sp1);
  
     filename_ref = [filename_chopped num2str(refindex_sp1(ii)) '.asc'];
-    refimg = load([frPath_sp1 filename_ref]);
+    refimg = loadascii([frPath_sp1 filename_ref]);
+    refimg = rot90(refimg,numrotations_sp1);
     
     if useROI_sp1 == 1
         refimg = refimg(ax_sp1(3):ax_sp1(4),ax_sp1(1):ax_sp1(2));
